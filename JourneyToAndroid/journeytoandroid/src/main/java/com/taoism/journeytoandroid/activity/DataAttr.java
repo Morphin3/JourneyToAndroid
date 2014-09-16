@@ -35,9 +35,14 @@ public class DataAttr extends Activity {
         findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
+                Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_EDIT);
-
+//                intent.setAction(Intent.ACTION_VIEW);
+                String data = "content://com.android.contacts/contacts/1";
+//                String data = "content://contacts/people";
+                Uri uri = Uri.parse(data);
+                intent.setData(uri);
+                startActivity(intent);
             }
         });
 
