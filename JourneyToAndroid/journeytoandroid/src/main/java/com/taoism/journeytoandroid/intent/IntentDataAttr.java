@@ -1,4 +1,4 @@
-package com.taoism.journeytoandroid.activity;
+package com.taoism.journeytoandroid.intent;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,11 +12,11 @@ import com.taoism.journeytoandroid.R;
  * <p/>
  * Intent data 属性
  */
-public class DataAttr extends Activity {
+public class IntentDataAttr extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_attr);
+        setContentView(R.layout.demo_intent_data_attr);
 
 
         findViewById(R.id.bn).setOnClickListener(new View.OnClickListener() {
