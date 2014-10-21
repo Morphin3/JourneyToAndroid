@@ -15,6 +15,7 @@
             android:required="false"/>
 
 
+        <!--各个目录的界面-->
         <activity android:name=".JourneyToAndroid">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -26,13 +27,26 @@
         </activity>
 
 
+        <!--模仿AndroidSamples中ApiDemos构建项目结构成功后测试的界面-->
         <activity
             android:name=".test.NewConstruction"
             android:label="Test/NewConstruction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.SAMPLE_CODE1"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
+
+        </activity>
+
+
+        <activity
+            android:name=".customview.AspectRatioImageViewDemo"
+            android:label="CustomView/AspectRatioImageViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
 
         </activity>
 

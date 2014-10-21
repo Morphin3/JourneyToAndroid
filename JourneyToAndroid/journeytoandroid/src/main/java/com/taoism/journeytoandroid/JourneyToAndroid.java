@@ -36,7 +36,7 @@ public class JourneyToAndroid extends ListActivity {
         List<Map<String, Object>> myData = new ArrayList<Map<String, Object>>();
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-        mainIntent.addCategory("android.intent.category.SAMPLE_CODE1");
+        mainIntent.addCategory("android.intent.category.JOURNEY_TO_ANDROID");
 //        mainIntent.addCategory(Intent.CATEGORY_SAMPLE_CODE);
 
         PackageManager pm = getPackageManager();
