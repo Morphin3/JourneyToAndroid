@@ -11,7 +11,7 @@ public class AspectRatioImageViewDemo extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_aspectratioimageview);
+        setContentView(R.layout.demo_aspect_ratio_imageview);
 
     }
 }

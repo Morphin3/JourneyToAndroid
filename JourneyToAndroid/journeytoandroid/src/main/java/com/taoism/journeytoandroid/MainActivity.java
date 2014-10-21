@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.demo_shimmer_text_view);
 
         shimmer_tv = (ShimmerTextView) findViewById(R.id.shimmer_tv);
         shimmer = new Shimmer();

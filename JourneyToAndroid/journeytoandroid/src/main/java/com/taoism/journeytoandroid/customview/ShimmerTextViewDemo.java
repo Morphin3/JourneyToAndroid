@@ -1,4 +1,4 @@
-package com.taoism.journeytoandroid.activity;
+package com.taoism.journeytoandroid.customview;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 import com.taoism.journeytoandroid.R;
 
 
-public class MainActivity extends Activity {
+public class ShimmerTextViewDemo extends Activity {
 
 
     private ShimmerTextView shimmer_tv;
@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.demo_shimmer_text_view);
 
         shimmer_tv = (ShimmerTextView) findViewById(R.id.shimmer_tv);
         shimmer = new Shimmer();
