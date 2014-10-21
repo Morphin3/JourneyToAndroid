@@ -1,3 +1,5 @@
+package com.taoism.journeytoandroid;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,7 +22,7 @@ public class JourneyToAndroid extends ListActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        String path = intent.getStringExtra("");
+        String path = intent.getStringExtra("com.taoism.journeytoandroid.Path");
 
         if (path == null) {
             path = "";
@@ -30,11 +32,12 @@ public class JourneyToAndroid extends ListActivity {
         getListView().setTextFilterEnabled(true);
     }
 
-    protected List<Map<String, Object>> getData(String prefix) {
+    protected List<Map<String, Object>> getData(String prefix) {                            // prefix="Test/NewConstruction"
         List<Map<String, Object>> myData = new ArrayList<Map<String, Object>>();
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-        mainIntent.addCategory(Intent.CATEGORY_SAMPLE_CODE);
+        mainIntent.addCategory("android.intent.category.SAMPLE_CODE1");
+//        mainIntent.addCategory(Intent.CATEGORY_SAMPLE_CODE);
 
         PackageManager pm = getPackageManager();
         List<ResolveInfo> list = pm.queryIntentActivities(mainIntent, 0);
@@ -44,13 +47,13 @@ public class JourneyToAndroid extends ListActivity {
         }
 
         String[] prefixPath;
-        String prefixWithSlash = prefix;
+        String prefixWithSlash = prefix;                                                    //prefixWithSlash="Test/NewConstruction"
 
         if (prefix.equals("")) {
             prefixPath = null;
         } else {
-            prefixPath = prefix.split("/");
-            prefixWithSlash = prefix + "/";
+            prefixPath = prefix.split("/");                                                 //prefixPath[0]="Test"  prefixPath[1]="NewConstruction"
+            prefixWithSlash = prefix + "/";                                                 //prefixWithSlash="Test/NewConstruction/"
         }
 
         int len = list.size();
@@ -59,7 +62,7 @@ public class JourneyToAndroid extends ListActivity {
         for (int i = 0; i < len; i++) {
             ResolveInfo info = list.get(i);
             CharSequence labelSeq = info.loadLabel(pm);
-            String label = labelSeq != null ? labelSeq.toString() : info.activityInfo.name;
+            String label = labelSeq != null ? labelSeq.toString() : info.activityInfo.name;   //label="Test/NewConstruction"
 
             if (prefixWithSlash.length() == 0 || label.startsWith(prefixWithSlash)) {
                 String[] labelPath = label.split("/");
@@ -119,7 +122,6 @@ public class JourneyToAndroid extends ListActivity {
     @Override
     @SuppressWarnings("unchecked")
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
         Map<String, Object> map = (Map<String, Object>) l.getItemAtPosition(position);
         Intent intent = (Intent) map.get("intent");
         startActivity(intent);
