@@ -2,22 +2,10 @@
 <pre-dex-items>
 
     <item
-        dex="/Users/chenfei/Morphin3/com.taoism.journeytoandroid.JourneyToAndroid/com.taoism.journeytoandroid.JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-bfc7cd1a7fa0e43af7f94c925f19b4ee2b24de20.jar"
-        jar="/Users/chenfei/Morphin3/com.taoism.journeytoandroid.JourneyToAndroid/com.taoism.journeytoandroid.JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.2.0/classes.jar"
+        dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-55db4466b0d94ad3d4c7e639e364a102fd11c37e.jar"
+        jar="/Users/chenfei/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="2ace5ecb0696f80c31a12bd4d00f49478c386f91"/>
-    <item
-        dex="/Users/chenfei/Morphin3/com.taoism.journeytoandroid.JourneyToAndroid/com.taoism.journeytoandroid.JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/support-v4-19.1.0-1254f41217bc208724d7d537ece65788959d84bf.jar"
-        jar="/Users/chenfei/android-sdk/22.6.2/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
-    <item
-        dex="/Users/chenfei/Morphin3/com.taoism.journeytoandroid.JourneyToAndroid/com.taoism.journeytoandroid.JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-a1a6002af412def68fdf527267b828ba174236e9.jar"
-        jar="/Users/chenfei/Morphin3/com.taoism.journeytoandroid.JourneyToAndroid/com.taoism.journeytoandroid.JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        revision="20.0.0"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08"/>
 
 </pre-dex-items>
