@@ -1,4 +1,4 @@
-package com.taoism.attrdemo.alphaimageview;
+package com.taoism.journeytoandroid.customview.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.taoism.journeytoandroid.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

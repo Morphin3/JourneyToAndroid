@@ -48,10 +48,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
-
-
         </activity>
-
 
         <activity
             android:name=".customview.ShimmerTextViewDemo"
@@ -61,6 +58,16 @@
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".customview.AlphaImageViewDemo"
+            android:label="CustomView(自定义控件)/AlphaImageViewDemo(透明度渐变图片)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
 
         <!--***************************************   Intent   ******************************************************************************************-->
 

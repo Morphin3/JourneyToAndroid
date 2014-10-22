@@ -1,4 +1,4 @@
-package com.taoism.journeytoandroid.widget;
+package com.taoism.journeytoandroid.customview.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
