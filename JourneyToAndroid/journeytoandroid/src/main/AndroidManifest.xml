@@ -39,6 +39,8 @@
         </activity>
 
 
+        <!--***************************************   CustomView   ******************************************************************************************-->
+        <!--各种自定义的控件，包括第三方-->
         <activity
             android:name=".customview.AspectRatioImageViewDemo"
             android:label="CustomView(自定义控件)/AspectRatioImageViewDemo(宽度适应屏幕，高度等比缩放)">
@@ -60,12 +62,26 @@
             </intent-filter>
         </activity>
 
+        <!--***************************************   Intent   ******************************************************************************************-->
 
         <activity
             android:name=".intent.IntentDataAttr"
             android:label="Intent/date属性"
             android:screenOrientation="portrait"
             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!--***************************************   ZZZ   ******************************************************************************************-->
+        <!--杂七杂八的Demo-->
+        <activity
+            android:name=".zzz.DeleteAndInstallDemo"
+            android:label="ZZZ/DeleteAndInstallDemo(先触发删除自身弹窗，再触发安装弹窗，事实是删除自身后触发的安装弹窗也消失了)">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
