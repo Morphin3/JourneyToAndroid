@@ -2,12 +2,14 @@ package com.taoism.journeytoandroid.activeandroid.model;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
 import java.util.List;
 
 /**
  * Created by chenfei on 14-10-22.
  */
+@Table(name = "Categories")
 public class Category extends Model {
 
     @Column(name = "Name")
@@ -19,7 +21,7 @@ public class Category extends Model {
         return getMany(Item.class, "Category");
     }
 
-
+    
 
 
 }
