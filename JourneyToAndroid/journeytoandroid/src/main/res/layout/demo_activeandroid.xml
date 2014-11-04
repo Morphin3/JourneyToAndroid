@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ActiveAndroid Demo"
+        />
+
+    <Button
+        android:id="@+id/btn_insert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert"
+        />
+
+    <Button
+        android:id="@+id/btn_bulk_insert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bulk Insert"
+        />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        />
+
+    <Button
+        android:id="@+id/btn_query_random"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QueryRandom"
+        />
+
+    <Button
+        android:id="@+id/btn_query_random_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QueryRandomCategory"
+        />
+
+    <Button
+        android:id="@+id/btn_query_all_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QueryAllCategory"
+        />
+
+
+
+</LinearLayout>
