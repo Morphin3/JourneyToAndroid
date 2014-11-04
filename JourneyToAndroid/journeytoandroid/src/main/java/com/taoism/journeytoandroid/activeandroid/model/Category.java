@@ -27,7 +27,7 @@ public class Category extends Model {
 //        return new Select().from(Category.class).where("Na")
 //    }
 
-    
+
 
 
 }
