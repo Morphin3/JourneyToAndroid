@@ -2,10 +2,22 @@
 <pre-dex-items>
 
     <item
+        dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-770697d1ed0a6b79be0fa990f9f7f3fa46e9ea94.jar"
+        jar="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library-circular/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="68bb12d2c7c7b9fc856d1184760fb114ffc4cf30"/>
+    <item
         dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-55db4466b0d94ad3d4c7e639e364a102fd11c37e.jar"
         jar="/Users/chenfei/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08"/>
+    <item
+        dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-6a59264d38c37cb5542edf7a8ea9f985a87b48f5.jar"
+        jar="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="698b40a43ecff2ebadc58b019ae236edd053fc67"/>
 
 </pre-dex-items>
