@@ -134,6 +134,16 @@
 
         </activity>
 
+        <!--***************************************   Animation   ******************************************************************************************-->
+
+        <activity
+            android:name=".animation.original.AnimationTestActivity"
+            android:label="Animation/AnimationTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
 
     </application>
 

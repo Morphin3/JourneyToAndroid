@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-770697d1ed0a6b79be0fa990f9f7f3fa46e9ea94.jar"
-        jar="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library-circular/1.0.1/classes.jar"
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.2.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="68bb12d2c7c7b9fc856d1184760fb114ffc4cf30"/>
+        sha1="2ace5ecb0696f80c31a12bd4d00f49478c386f91">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-df56aa760ccf9c000b4badf2297a71426634488e.jar" />
+    </item>
     <item
-        dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-55db4466b0d94ad3d4c7e639e364a102fd11c37e.jar"
-        jar="/Users/chenfei/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library/1.0.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08"/>
+        sha1="698b40a43ecff2ebadc58b019ae236edd053fc67">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-420053c1acfe4935faa48ab6c001128a879038f8.jar" />
+    </item>
     <item
-        dex="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-6a59264d38c37cb5542edf7a8ea9f985a87b48f5.jar"
-        jar="/Users/chenfei/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library/1.0.0/classes.jar"
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library-circular/1.0.1/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="698b40a43ecff2ebadc58b019ae236edd053fc67"/>
+        sha1="68bb12d2c7c7b9fc856d1184760fb114ffc4cf30">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-001148f7c370764efaff9b82f446d5ba673158ac.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-31049bce853950266fa6513c6274b1253222c461.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-8924bd72074f5d8d3af3efd16580ef49a8bdc5ac.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Tools/android-sdk-macosx/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/support-v4-19.1.0-997987bc8337fb99fd718640cb64d788a4c13603.jar" />
+    </item>
 
-</pre-dex-items>
+</items>
