@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -63,6 +64,8 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
             fl_countdown.setVisibility(View.VISIBLE);
 
             Animation alphaCountdown=AnimationUtils.loadAnimation(this,R.anim.alpha_countdown);
+            CycleInterpolator cycleInterpolator=new CycleInterpolator(0.5f);
+            alphaCountdown.setInterpolator(cycleInterpolator);
             iv_countdown_back.startAnimation(alphaCountdown);
 
             Animation rotateCountdown= AnimationUtils.loadAnimation(this,R.anim.rotate_countdown);
