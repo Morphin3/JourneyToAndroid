@@ -22,6 +22,7 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
     private Button btn_start;
     private Button btn_stop;
     private FrameLayout fl_countdown;
+    private ImageView iv_countdown_back;
     private ImageView iv_countdown_front;
     private TextView tv_countdown;
 
@@ -41,6 +42,7 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
         btn_start=(Button)findViewById(R.id.btn_start);
         btn_stop=(Button)findViewById(R.id.btn_stop);
         fl_countdown=(FrameLayout)findViewById(R.id.fl_countdown);
+        iv_countdown_back=(ImageView)findViewById(R.id.iv_countdown_back);
         iv_countdown_front=(ImageView)findViewById(R.id.iv_countdown_front);
         tv_countdown=(TextView)findViewById(R.id.tv_countdown);
 
@@ -50,7 +52,6 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
     public void initListener() {
         btn_start.setOnClickListener(this);
         btn_stop.setOnClickListener(this);
-
     }
 
     @Override
@@ -58,8 +59,13 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
         int rid=v.getId();
         if(rid==R.id.btn_start){
             fl_countdown.setVisibility(View.VISIBLE);
-            Animation countdown= AnimationUtils.loadAnimation(this,R.anim.countdown);
-            iv_countdown_front.startAnimation(countdown);
+
+            Animation alphaCountdown=AnimationUtils.loadAnimation(this,R.anim.alpha_countdown);
+            alphaCountdown.setRepeatCount(60);
+            iv_countdown_back.startAnimation(alphaCountdown);
+
+            Animation rotateCountdown= AnimationUtils.loadAnimation(this,R.anim.rotate_countdown);
+            iv_countdown_front.startAnimation(rotateCountdown);
 
             mCountDownTimer=new CountDownTimer(Constant.Time.SECOND*60,Constant.Time.SECOND){
                 @Override
@@ -73,6 +79,7 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
                 }
             }.start();
         }else if(rid==R.id.btn_stop){
+            iv_countdown_back.clearAnimation();
             iv_countdown_front.clearAnimation();
             mCountDownTimer.cancel();
         }
