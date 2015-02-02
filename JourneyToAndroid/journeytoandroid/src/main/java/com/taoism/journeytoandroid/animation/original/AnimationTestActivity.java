@@ -1,11 +1,13 @@
 package com.taoism.journeytoandroid.animation.original;
 
 import android.app.Activity;
+import android.graphics.Interpolator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -61,10 +63,12 @@ public class AnimationTestActivity extends Activity implements InitializeInterfa
             fl_countdown.setVisibility(View.VISIBLE);
 
             Animation alphaCountdown=AnimationUtils.loadAnimation(this,R.anim.alpha_countdown);
-            alphaCountdown.setRepeatCount(60);
             iv_countdown_back.startAnimation(alphaCountdown);
 
             Animation rotateCountdown= AnimationUtils.loadAnimation(this,R.anim.rotate_countdown);
+            LinearInterpolator linearInterpolator=new LinearInterpolator();
+            rotateCountdown.setInterpolator(linearInterpolator);
+            rotateCountdown.setStartOffset(0);
             iv_countdown_front.startAnimation(rotateCountdown);
 
             mCountDownTimer=new CountDownTimer(Constant.Time.SECOND*60,Constant.Time.SECOND){

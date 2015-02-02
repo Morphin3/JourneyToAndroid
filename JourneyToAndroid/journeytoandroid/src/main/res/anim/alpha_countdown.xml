@@ -2,11 +2,12 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <alpha
-        android:duration="2000"
-        android:fromAlpha="0.5"
+        android:duration="3000"
+        android:fromAlpha="0.7"
         android:toAlpha="1.0"
         android:repeatCount="30"
         android:repeatMode="reverse"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
         />
 
 </set>
