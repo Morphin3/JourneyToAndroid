@@ -5,16 +5,6 @@
         <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
     <!--</style>-->
 
-
-    <!--Dialog 动画-->
-    <style name="DialogInOutAnimation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
-    </style>
-
-
-
-
     <style name="AppTheme" parent="android:Theme.Holo">
         <item name="spbStyle">@style/SmoothProgressBar</item>
         <item name="cpbStyle">@style/CircularProgressBar</item>
@@ -22,6 +12,355 @@
 
     <style name="ProgressBar.Horizontal" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
     </style>
+
+
+
+
+
+
+
+
+    <style name="DialogSlideInOut" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+
+    <style name="DividerHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/divider_grey_light</item>
+    </style>
+
+    <style name="DividerHorizontalMedium" parent="DividerHorizontal">
+        <item name="android:layout_marginLeft">@dimen/padding_medium</item>
+        <item name="android:layout_marginRight">@dimen/padding_medium</item>
+    </style>
+
+    <style name="DividerHorizontalBlackPure">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/bg_black_pure</item>
+    </style>
+
+
+
+
+    <style name="DividerVertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_grey_light</item>
+    </style>
+
+    <style name="DividerVertical_MIDDLE">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_middle</item>
+    </style>
+
+    <style name="DividerVerticalXDark">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_grey_xxdark</item>
+    </style>
+
+    <style name="DividerHorizontalBlack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/text_content</item>
+    </style>
+
+    <style name="DividerHorizontalGrey">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/divider_grey</item>
+    </style>
+
+    <style name="DividerHorizontalXDark">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/divider_grey_xxdark</item>
+    </style>
+
+    <style name="DividerDashHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@drawable/ic_dash_line</item>
+    </style>
+
+    <style name="DividerDashHorizontalBlackPure">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@drawable/ic_dash_line_black_pure</item>
+    </style>
+
+
+    <!--EditText-->
+    <style name="EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="EditText.Input">
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">@dimen/padding_medium</item>
+        <item name="android:paddingBottom">@dimen/padding_medium</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textColor">@color/text_content</item>
+        <item name="android:textColorHint">@color/text_label</item>
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/selectsheet_push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/selectsheet_push_bottom_out</item>
+    </style>
+
+
+    <!--推送提示界面主题-->
+    <style name="Theme.Transparent" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/ActivityInOutAnimation</item>
+    </style>
+
+
+    <style name="ActivityInOutAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_bottom</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+
+    <!--&lt;!&ndash;Tab&ndash;&gt;-->
+    <!--<style name="StyledIndicators" parent="AppTheme">-->
+        <!--<item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+
+    <!--</style>-->
+
+
+    <!--<style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">-->
+    <!--<item name="android:background">@drawable/custom_tab_indicator</item>-->
+    <!--<item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>-->
+    <!--<item name="android:textColor">#FF555555</item>-->
+    <!--<item name="android:textSize">@dimen/text_medium</item>-->
+    <!--&lt;!&ndash;<item name="android:divider">@drawable/custom_tab_indicator_divider</item>&ndash;&gt;-->
+    <!--<item name="android:dividerPadding">10dp</item>-->
+    <!--<item name="android:showDividers">middle</item>-->
+    <!--<item name="android:paddingLeft">8dp</item>-->
+    <!--<item name="android:paddingRight">8dp</item>-->
+    <!--<item name="android:fadingEdge">horizontal</item>-->
+    <!--<item name="android:fadingEdgeLength">8dp</item>-->
+    <!--</style>-->
+
+    <!--<style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">-->
+    <!--<item name="android:typeface">monospace</item>-->
+    <!--</style>-->
+
+
+    <!--Dialog 动画-->
+    <style name="DialogInOutAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <style name="DialogHalfWidthButton">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/theme_red_new</item>
+    </style>
+
+
+    <style name="StyledButtonWithWeight">
+        <item name="android:paddingTop">@dimen/padding_button_top_bottom</item>
+        <item name="android:paddingBottom">@dimen/padding_button_top_bottom</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="StyledButton">
+        <item name="android:paddingTop">@dimen/padding_button_top_bottom</item>
+        <item name="android:paddingBottom">@dimen/padding_button_top_bottom</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="CommonButtonBgRed" parent="StyledButton">
+        <item name="android:background">@drawable/selector_common_button_bg_red</item>
+        <item name="android:textColor">@color/text_white_pure</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+
+
+
+    <!-- 通用-->
+    <style name="ActionBarTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/text_white_pure</item>
+        <item name="android:padding">@dimen/padding_normal</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="IndeterminateProgressBar">
+        <item name="android:indeterminate">true</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:maxHeight">10dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:maxWidth">48dp</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_indeterminate_horizontal_holo</item>
+        <item name="android:indeterminateBehavior">repeat</item>
+        <item name="android:indeterminateDuration">3500</item>
+    </style>
+
+
+    <style name="StyledPaddingMedium">
+        <item name="android:paddingTop">@dimen/padding_medium</item>
+        <item name="android:paddingBottom">@dimen/padding_medium</item>
+        <item name="android:paddingLeft">@dimen/padding_medium</item>
+        <item name="android:paddingRight">@dimen/padding_medium</item>
+    </style>
+
+    <style name="StyledPadding">
+        <item name="android:paddingTop">@dimen/padding_medium</item>
+        <item name="android:paddingBottom">@dimen/padding_medium</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+    </style>
+
+    <style name="StyledPaddingNoraml">
+        <item name="android:paddingTop">@dimen/padding_normal</item>
+        <item name="android:paddingBottom">@dimen/padding_normal</item>
+        <item name="android:paddingLeft">@dimen/padding_medium</item>
+        <item name="android:paddingRight">@dimen/padding_medium</item>
+    </style>
+
+    <style name="StyledPaddingLarge">
+        <item name="android:paddingTop">@dimen/padding_large</item>
+        <item name="android:paddingBottom">@dimen/padding_large</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+    </style>
+
+    <style name="StyledViewWithoutPressed" parent="StyledPadding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="StyledViewMediumWithoutPressed" parent="StyledPaddingMedium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="StyledViewMedium" parent="StyledPaddingMedium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_bg_white_grey_pressed</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+    <style name="StyledET" parent="StyledPadding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/text_grey_xlight</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+    <style name="StyledETWithoutPadding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/text_grey_xlight</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+
+    <style name="StyledTV">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="StyledTVContent" parent="StyledTV">
+        <item name="android:textColor">@color/text_content</item>
+    </style>
+
+    <style name="StyledTVWhitePure" parent="StyledTV">
+        <item name="android:textColor">@color/text_white_pure</item>
+    </style>
+
+    <style name="StyledTVWhite" parent="StyledTV">
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+    <style name="StyledTVGreyLight" parent="StyledTV">
+        <item name="android:textColor">@color/text_grey_light</item>
+    </style>
+    <style name="StyledTVGreyNew" parent="StyledTV">
+        <item name="android:textColor">@color/text_grey_new</item>
+    </style>
+
+    <style name="StyledTVGreyLightNew" parent="StyledTV">
+        <item name="android:textColor">@color/text_grey_light_new</item>
+    </style>
+
+    <style name="StyledTVBlackNew" parent="StyledTV">
+        <item name="android:textColor">@color/text_black_new</item>
+    </style>
+
+
+
+    <style name="StyledIV">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="StyledTVWithWeight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textColor">@color/text_content</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--****************************************分割线****************************************-->
+
+
+
+
 
     <style name="GPlusProgressBar" parent="SmoothProgressBar">
         <item name="spb_stroke_separator_length">12dp</item>

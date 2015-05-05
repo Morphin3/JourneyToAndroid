@@ -1,5 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#FFFFFF</color>
+
+    <color name="divider_grey">#3A3A3A</color>
+    <color name="divider_grey_light">#DCDCDC</color>
+    <color name="divider_grey_dark">#999999</color>
+    <color name="divider_grey_xdark">#505050</color>
+    <color name="divider_grey_xxdark">#222222</color>
+    <color name="divider_grey_in_black">#3b3b3b</color>
+
+    <!--<color name="divider_light">#ebebeb</color>-->
+    <color name="divider_black">#171717</color>
+
+    <color name="divider_welcome">#4C4C4C</color>
+
+    <!--background-->
+    <color name="bg_black_light">#262626</color>
+    <color name="bg_black_pure">#000000</color>
+    <color name="bg_black_top_bar">#262626</color>
+    <color name="bg_black_pressed">#313030</color>
+
+    <color name="bg_black_light_pressed">#333333</color>
+
+    <color name="bg_white_grey_pressed">#e1e1e1</color>
+
+    <color name="bg_light_red">#FDECEC</color>
+    <color name="bg_yellow">#fefbc2</color>
+    <color name="bg_orange">#fdf7ef</color>
+    <color name="bg_light_yellow">#FFFABA</color>
+
+    <color name="bg_white_transparent">#aaFFFFFF</color>
+    <color name="bg_white_transparent_90">#e6FFFFFF</color>
+
+    <color name="bg_white_transparent_20">#545456</color>
+    <color name="bg_white_transparent_20_pressed">#363638</color>
+
+    <color name="bg_black_theme">#262626</color>
+    <color name="bg_grey_theme">#2a2a2c</color>
+    <color name="bg_grey_theme_pressed">#3F3F41</color>
+
+    <color name="bg_grey_light_theme">#353537</color>
+    <color name="bg_grey_light_theme_pressed">#5D5D5F</color>
+
+
+
+    <color name="bg_grey_edittext">#383838</color>
+
+
+    <color name="bg_red_dark">#e5080b</color>
+    <color name="bg_red_dark_pressed">#b70608</color>
+    <color name="bg_red">#f14647</color>
+    <color name="bg_red_pressed">#c03838</color>
+    <color name="bg_red_light">#f86b6d</color>
+    <color name="bg_red_light_pressed">#c65557</color>
+
+
+
+
+    <color name="theme_light_grey">#f3f3f3</color>
+    <color name="theme_dark">#3D3D3D</color>
+    <color name="btn_red_pressed">#da4b4e</color>
+
+
+    <color name="text_grey_xlight">#bcbcbc</color>
+    <color name="text_grey_dark">#666666</color>
+    <color name="text_grey_xdark">#4F4F4F</color>
+    <color name="text_grey_xxdark">#353535</color>
+    <color name="text_grey_light">#999999</color>
+    <color name="text_black_new">#444444</color>
+    <color name="text_grey_new">#717171</color>
+    <color name="text_grey_light_new">#a4a4a4</color>
+    <color name="text_blue">#4A90E2</color>
+
+    <color name="text_disable">#A1A1A1</color>
+
+    <color name="text_yellow">#F5A623</color>
+
+    <color name="text_white_pure">#ffffff</color>
+    <color name="text_white">#d8d8d8</color>
+    <color name="text_white_pressed">#cccccc</color>
+
+
+
+    <color name="text_content">#171717</color>
+    <!--<color name="text_content">#4b4b4b</color>-->
+    <color name="text_light_content">#999999</color>
+    <!--<color name="text_light_content">#999999</color>-->
+    <color name="text_lighter_content">#cccccc</color>
+    <color name="text_red">#EF4242</color>
+    <color name="text_green">#8AD634</color>
+
+    <color name="text_black_light">#696969</color>
+
+    <color name="btn_toolbar_normal">#262626</color>
+    <color name="btn_toolbar_pressed">#AA262626</color>
+
+    <color name="blue_light">#ff33b5e5</color>
+    <color name="green_light">#ff99cc00</color>
+    <color name="orange_light">#ffffbb33</color>
+    <color name="red_light">#ffff4444</color>
+
+    <color name="line_red">#CF4444</color>
+    <color name="line_gray">#EBEBEB</color>
+
+    <color name="btn_disable">#dedede</color>
+    <color name="btn_white_pressed">#ffeeeeee</color>
+    <color name="btn_white_normal">#ffffffff</color>
+
+    <color name="theme_red_new">#F04042</color>
+    <color name="theme_red_new_pressed">#BD3535</color>
+    <color name="theme_red_new_transparent">#aaEF4242</color>
+    <color name="text_label">#737070</color>
+
+    <color name="theme_red_light_pressed">#da4b4e</color>
+    <color name="hole_disable2">#999999</color>
+    <color name="hole_disable">#dedede</color>
+
+    <color name="dialog_bg_top">#fbfbfb</color>
+
+    <color name="mask">#aa000000</color>
+
+    <color name="btn_bg_green">#6AC902</color>
+    <color name="btn_bg_green_pressed">#5DB200</color>
+
+    <!--added by chenfei-->
+    <!--灰色边框-->
+    <color name="border_grey">#DDDDDD</color>
+    <!--浅灰底色-->
+    <color name="bg_light_grey">#EAEAEA</color>
+    <color name="bg_grey_xlight">#F8F8F8</color>
+    <color name="bg_grey_xxlight">#f6f6f6</color>
+
+
+    <color name="light_black">#666666</color>
+
+    <color name="text_content_green_dark">#239832</color>
+    <color name="text_content_green_light">#49AA47</color>
+
+    <color name="text_content_green_light2">#94CD93</color>
+    <color name="text_content_blue">#1995DC</color>
+
+    <color name="bg_light_green">#EBF6EB</color>
+
+
+    <color name="theme_blue">#0099cc</color>
+    <color name="divider_middle">#999999</color>
+
+
+    <color name="red1">#D22F2F</color>
+    <color name="red2">#EF4242</color>
+    <color name="red3">#EE5454</color>
+    <color name="red4">#FD6D6D</color>
+
+    <color name="button_green_pressed">#267D24</color>
+    <color name="button_green">#3DA53B</color>
+
+
+    <color name="transparent">#00000000</color>
+
+
+
+
+
+    <!--*****************************  分割线  ***********************************-->
+
+
     <integer-array name="colors">
         <item>@color/holo_blue_dark</item>
         <item>@color/holo_yellow_dark</item>
