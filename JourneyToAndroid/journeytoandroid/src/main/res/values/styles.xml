@@ -10,13 +10,13 @@
         <item name="cpbStyle">@style/CircularProgressBar</item>
     </style>
 
-    <style name="ProgressBar.Horizontal" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+    <style name="ActionBarCustomTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
 
-
-
-
+    <style name="ProgressBar.Horizontal" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+    </style>
 
 
 

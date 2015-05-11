@@ -154,11 +154,29 @@
             </intent-filter>
         </activity>
 
-        <!--***************************************   Animation   ******************************************************************************************-->
+        <!--***************************************   DeepIntoView   ******************************************************************************************-->
 
         <activity
             android:name=".deepintoview.LayoutInflaterActivity"
             android:label="DeepIntoView/LayoutInflater">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <!--***************************************   ActionBar   ******************************************************************************************-->
+
+        <activity
+            android:name=".actionbar.ActionBarDemoActivity"
+            android:label="ActionBar/ActionBarDemo"
+            android:theme="@style/ActionBarCustomTheme"
+            android:parentActivityName=".JourneyToAndroid"
+            >
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".JourneyToAndroid"/>-->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>

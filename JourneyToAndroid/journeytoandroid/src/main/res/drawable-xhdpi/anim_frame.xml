@@ -3,9 +3,9 @@
     android:oneshot="false"
     >
     <item android:drawable="@drawable/ic_nav_0" android:duration="200"/>
-    <item android:drawable="@drawable/ic_nav_1" android:duration="200"/>
-    <item android:drawable="@drawable/ic_nav_2" android:duration="200"/>
-    <item android:drawable="@drawable/ic_nav_3" android:duration="200"/>
-    <item android:drawable="@drawable/ic_nav_4" android:duration="200"/>
+    <item android:drawable="@drawable/ic_nav_1" android:duration="400"/>
+    <item android:drawable="@drawable/ic_nav_2" android:duration="600"/>
+    <item android:drawable="@drawable/ic_nav_3" android:duration="800"/>
+    <item android:drawable="@drawable/ic_nav_4" android:duration="1000"/>
 
 </animation-list>
