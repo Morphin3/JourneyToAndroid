@@ -35,6 +35,7 @@ public class ActionBarDemoActivity extends ActionBarActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.demo_action_bar_actions, menu);
         return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
