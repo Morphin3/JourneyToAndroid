@@ -15,7 +15,11 @@ public class BroadcastDemo extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_broadcast);
+
     }
+
+
+
 
 
 }
