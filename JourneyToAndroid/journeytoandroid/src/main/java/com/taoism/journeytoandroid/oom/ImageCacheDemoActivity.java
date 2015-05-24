@@ -48,7 +48,7 @@ public class ImageCacheDemoActivity extends Activity {
      */
     private void openPhotos(){
         Intent intent= new Intent(Intent.ACTION_PICK, null);
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "iamge/*");
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         startActivityForResult(intent,OPEN_PHOTO_REQUESTCODE);
     }
 
@@ -60,11 +60,12 @@ public class ImageCacheDemoActivity extends Activity {
             case OPEN_PHOTO_REQUESTCODE:
                 if(resultCode == RESULT_OK){
                     //如果用这个方法，Options为null时候，就是默认decode会出现oom哦
-                    Bitmap bm = ImageCacheUtil.decode(null,null,ImageCacheDemoActivity.this,data.getData(),null);
+//                    Bitmap bm = ImageCacheUtil.decode(null,null,ImageCacheDemoActivity.this,data.getData(),null);
 
                     //这里调用这个方法就不会oom.屌丝们就用这个方法吧.
-//                    Bitmap bm =ImageCacheUtil.getResizedBitMap(null,null,ImageCacheDemoActivity.this,data.getData(),target,false);
-//                    iv.setImageBitmap(bm);
+                    Bitmap bm =ImageCacheUtil.getResizedBitMap(null,null,ImageCacheDemoActivity.this,data.getData(),target,false);
+
+                    iv.setImageBitmap(bm);
                 }
 
                 break;
