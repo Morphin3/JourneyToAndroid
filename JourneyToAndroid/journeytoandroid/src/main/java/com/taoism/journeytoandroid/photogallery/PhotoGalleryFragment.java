@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.taoism.journeytoandroid.R;
 
+import java.util.ArrayList;
+
 /**
  * Date: 2015-05-28
  * Time: 16:26
@@ -26,6 +28,8 @@ public class PhotoGalleryFragment extends Fragment {
     private  static final String TAG = "PhotoGalleryFragment";
 
     RecyclerView rv_content;
+
+    ArrayList<GalleryItem> mItems;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,16 +48,29 @@ public class PhotoGalleryFragment extends Fragment {
 
         rv_content = (RecyclerView) v.findViewById(R.id.rv_content);
 //        rv_content.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv_content.setLayoutManager(new StaggeredGridLayoutManager(2,OrientationHelper.VERTICAL));
-        rv_content.setAdapter(new PhotoGalleryAdapter(getActivity()));
+        rv_content.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
+
+        setupAdapter();
         return v;
     }
 
+    void setupAdapter(){
+        if(getActivity() == null || rv_content == null)
+            return;
+        if(mItems != null){
+            PhotoGalleryAdapter photoGalleryAdapter =new PhotoGalleryAdapter(getActivity());
+            photoGalleryAdapter.setData(mItems);
+            rv_content.setAdapter(photoGalleryAdapter);
+        } else{
+            rv_content.setAdapter(null);
+        }
+    }
 
-    private class FetchItemsTask extends AsyncTask<Void,Void,Void> {
+
+    private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<GalleryItem>> {
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected ArrayList<GalleryItem> doInBackground(Void... params) {
 //            try{
 //                String result = new FlickrFetchr().getUrl("http://www.baidu.com");
 //                Log.i(TAG, "Fetched contents of URL: " + result);
@@ -61,9 +78,19 @@ public class PhotoGalleryFragment extends Fragment {
 //                Log.e(TAG,"Failed to fetch URL:", ioe);
 //            }
 
-            new FlickrFetchr().fetchItems();
+//            --------------------------------
+//            new FlickrFetchr().fetchItems();
+//            return null;
+//            --------------------------------
 
-            return null;
+            return new FlickrFetchr().fetchItems();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<GalleryItem> items) {
+            mItems = items;
+            setupAdapter();
+//            super.onPostExecute(items);
         }
     }
 }
