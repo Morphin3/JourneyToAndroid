@@ -5,4 +5,36 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="titles">
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+        <item>陶喆</item>
+        <item>关诗敏</item>
+        <item>王力宏</item>
+        <item>周杰伦</item>
+
+    </string-array>
+
 </resources>

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.taoism.journeytoandroid">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.taoism.journeytoandroid.MyApplication"
         android:allowBackup="true"
@@ -247,6 +250,17 @@
             </intent-filter>
 
         </service>
+
+        <!--***************************************   PhotoGallery   ******************************************************************************************-->
+
+        <activity
+            android:name=".photogallery.PhotoGalleryActivity"
+            android:label="PhotoGallery/PhotoGallery">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+            </intent-filter>
+        </activity>
 
 
     </application>

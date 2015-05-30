@@ -16,6 +16,13 @@
         <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-df56aa760ccf9c000b4badf2297a71426634488e.jar" />
     </item>
     <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-f2f787f2bf5a6a697b6d2bb1a32bd044f83b35b8.jar" />
+    </item>
+    <item
         jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
