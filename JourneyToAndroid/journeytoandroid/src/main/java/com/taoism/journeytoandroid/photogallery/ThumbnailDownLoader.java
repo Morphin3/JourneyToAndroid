@@ -32,9 +32,25 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
 
     Map<Token,String> requestMap = Collections.synchronizedMap(new HashMap<Token, String>());
 
+    Handler mResponseHandler;
 
-    public ThumbnailDownLoader(){
+    Listener<Token> mListener;
+
+    public interface Listener<Token> {
+        void onThumbnailDownloaded(Token token, Bitmap thumbnail);
+    }
+
+    public void setListener(Listener<Token> listener){
+        mListener = listener;
+    }
+
+//    public ThumbnailDownLoader(){
+//        super(TAG);
+//    }
+
+    public ThumbnailDownLoader(Handler responseHandler){
         super(TAG);
+        mResponseHandler = responseHandler;
     }
 
     @SuppressLint("HandlerLeak")
@@ -72,10 +88,26 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
             byte[] bitmapBytes = new FlickrFetchr().getUrlBytes(url);
             final Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapBytes,0,bitmapBytes.length);
             Log.i(TAG, "Bitmap created");
+
+            mResponseHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if(requestMap.get(token) != url)
+                        return;
+                    requestMap.remove(token);
+                    mListener.onThumbnailDownloaded(token,bitmap);
+                }
+
+            });
         }catch (IOException ioe){
             Log.e(TAG, "Error downloading image", ioe);
         }
 
+    }
+
+    public void clearQueue() {
+        mHandler.removeMessages(MESSAGE_DOWNLOAD);
+        requestMap.clear();
     }
 
 }

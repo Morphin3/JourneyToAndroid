@@ -1,8 +1,10 @@
 package com.taoism.journeytoandroid.photogallery;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.OrientationHelper;
@@ -29,7 +31,7 @@ import java.util.ArrayList;
  * FIXME
  */
 public class PhotoGalleryFragment extends Fragment {
-    private  static final String TAG = "PhotoGalleryFragment";
+    private static final String TAG = "PhotoGalleryFragment";
 
     RecyclerView rv_content;
 
@@ -44,7 +46,15 @@ public class PhotoGalleryFragment extends Fragment {
 
         new FetchItemsTask().execute();
 
-        mThumbnailThread = new ThumbnailDownLoader<ImageView>();
+        mThumbnailThread = new ThumbnailDownLoader<>(new Handler());
+        mThumbnailThread.setListener(new ThumbnailDownLoader.Listener<ImageView>() {
+            @Override
+            public void onThumbnailDownloaded(ImageView imageView, Bitmap thumbnail) {
+                if (isVisible()) {
+                    imageView.setImageBitmap(thumbnail);
+                }
+            }
+        });
         mThumbnailThread.start();
         mThumbnailThread.getLooper();
         Log.i(TAG, "Backgroud thread started");
@@ -64,20 +74,20 @@ public class PhotoGalleryFragment extends Fragment {
         return v;
     }
 
-    void setupAdapter(){
-        if(getActivity() == null || rv_content == null)
+    void setupAdapter() {
+        if (getActivity() == null || rv_content == null)
             return;
-        if(mItems != null){
-            PhotoGalleryAdapter photoGalleryAdapter =new PhotoGalleryAdapter(getActivity());
+        if (mItems != null) {
+            PhotoGalleryAdapter photoGalleryAdapter = new PhotoGalleryAdapter(getActivity());
             photoGalleryAdapter.setData(mItems);
             rv_content.setAdapter(photoGalleryAdapter);
-        } else{
+        } else {
             rv_content.setAdapter(null);
         }
     }
 
 
-    private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<GalleryItem>> {
+    private class FetchItemsTask extends AsyncTask<Void, Void, ArrayList<GalleryItem>> {
 
         @Override
         protected ArrayList<GalleryItem> doInBackground(Void... params) {
@@ -104,6 +114,11 @@ public class PhotoGalleryFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mThumbnailThread.clearQueue();
+    }
 
     @Override
     public void onDestroy() {
@@ -126,11 +141,11 @@ public class PhotoGalleryFragment extends Fragment {
 
         private Context mContext;
         private String[] mTitles;
-        private ArrayList<GalleryItem> mItems= new ArrayList<GalleryItem>();
+        private ArrayList<GalleryItem> mItems = new ArrayList<GalleryItem>();
 
         public PhotoGalleryAdapter(Context mContext) {
             this.mContext = mContext;
-            mTitles= mContext.getResources().getStringArray(R.array.titles);
+            mTitles = mContext.getResources().getStringArray(R.array.titles);
         }
 
         @Override
@@ -146,9 +161,9 @@ public class PhotoGalleryFragment extends Fragment {
 
             holder.iv_picture.setImageResource(R.drawable.ic_nav_0);
             GalleryItem item = mItems.get(position);
-            mThumbnailThread.queenThumbnail(holder.iv_picture,item.getmUrl());
+            mThumbnailThread.queenThumbnail(holder.iv_picture, item.getmUrl());
 
-//        holder.tv_title.setText(mItems.get(position).getmCaption());
+            holder.tv_title.setText(item.getmCaption());
 //        holder.tv_title.setText(mTitles[position]);
         }
 
@@ -159,8 +174,7 @@ public class PhotoGalleryFragment extends Fragment {
         }
 
 
-
-        public  class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
             public ImageView iv_picture;
             public TextView tv_title;
@@ -173,7 +187,7 @@ public class PhotoGalleryFragment extends Fragment {
         }
 
 
-        public void setData(ArrayList<GalleryItem> items){
+        public void setData(ArrayList<GalleryItem> items) {
             mItems.clear();
             mItems.addAll(items);
 //        notifyDataSetChanged();
