@@ -47,6 +47,7 @@ public class PhotoGalleryFragment extends Fragment {
         new FetchItemsTask().execute();
 
         mThumbnailThread = new ThumbnailDownLoader<>(new Handler());
+//        mThumbnailThread = new ThumbnailDownLoader<>(new ResponseHandler());
         mThumbnailThread.setListener(new ThumbnailDownLoader.Listener<ImageView>() {
             @Override
             public void onThumbnailDownloaded(ImageView imageView, Bitmap thumbnail) {
@@ -59,6 +60,18 @@ public class PhotoGalleryFragment extends Fragment {
         mThumbnailThread.getLooper();
         Log.i(TAG, "Backgroud thread started");
     }
+
+//    class ResponseHandler extends Handler{
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            if (isVisible()) {
+//                ImageView imageView = (ImageView)msg.obj;
+//                Bitmap bitmap = msg.getData().getParcelable("bitmap");
+//                imageView.setImageBitmap(bitmap);
+//            }
+//        }
+//    }
 
 
     @Nullable

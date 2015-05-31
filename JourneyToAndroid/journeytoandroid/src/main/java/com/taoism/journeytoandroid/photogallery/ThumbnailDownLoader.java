@@ -30,7 +30,7 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
 
     Handler mHandler;
 
-    Map<Token,String> requestMap = Collections.synchronizedMap(new HashMap<Token, String>());
+    Map<Token, String> requestMap = Collections.synchronizedMap(new HashMap<Token, String>());
 
     Handler mResponseHandler;
 
@@ -40,7 +40,7 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
         void onThumbnailDownloaded(Token token, Bitmap thumbnail);
     }
 
-    public void setListener(Listener<Token> listener){
+    public void setListener(Listener<Token> listener) {
         mListener = listener;
     }
 
@@ -48,7 +48,7 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
 //        super(TAG);
 //    }
 
-    public ThumbnailDownLoader(Handler responseHandler){
+    public ThumbnailDownLoader(Handler responseHandler) {
         super(TAG);
         mResponseHandler = responseHandler;
     }
@@ -56,12 +56,12 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
     @SuppressLint("HandlerLeak")
     @Override
     protected void onLooperPrepared() {
-        mHandler = new Handler(){
+        mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if(msg.what == MESSAGE_DOWNLOAD){
+                if (msg.what == MESSAGE_DOWNLOAD) {
                     @SuppressWarnings("unchecked")
-                    Token token = (Token)msg.obj;
+                    Token token = (Token) msg.obj;
                     Log.i(TAG, "Got a request for url" + requestMap.get(token));
                     handlerRequest(token);
                 }
@@ -69,37 +69,49 @@ public class ThumbnailDownLoader<Token> extends HandlerThread {
         };
     }
 
-    public void queenThumbnail(Token token, String url){
+    public void queenThumbnail(Token token, String url) {
         Log.i(TAG, "Got an URL: " + url);
-        requestMap.put(token,url);
+        requestMap.put(token, url);
 
         mHandler
-                .obtainMessage(MESSAGE_DOWNLOAD,token)
+                .obtainMessage(MESSAGE_DOWNLOAD, token)
                 .sendToTarget();
     }
 
-    private void handlerRequest(final Token token){
-        try{
+    private void handlerRequest(final Token token) {
+        try {
             final String url = requestMap.get(token);
-            if(url == null){
+            if (url == null) {
                 return;
             }
 
             byte[] bitmapBytes = new FlickrFetchr().getUrlBytes(url);
-            final Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapBytes,0,bitmapBytes.length);
+            final Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapBytes, 0, bitmapBytes.length);
             Log.i(TAG, "Bitmap created");
 
+            //以Runnable的形式实现
             mResponseHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    if(requestMap.get(token) != url)
+                    if (requestMap.get(token) != url)
                         return;
                     requestMap.remove(token);
-                    mListener.onThumbnailDownloaded(token,bitmap);
+                    mListener.onThumbnailDownloaded(token, bitmap);
                 }
 
             });
-        }catch (IOException ioe){
+
+
+            //自己以sendMessage()的形式实现
+//            Message message=mResponseHandler.obtainMessage();
+//            Bundle bundle=new Bundle();
+//            bundle.putParcelable("bitmap",bitmap);
+//            message.setData(bundle);
+//            message.obj=token;
+//            mResponseHandler.sendMessage(message);
+
+
+        } catch (IOException ioe) {
             Log.e(TAG, "Error downloading image", ioe);
         }
 
