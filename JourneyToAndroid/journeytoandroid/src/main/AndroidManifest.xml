@@ -256,7 +256,7 @@
             android:process=":remote">
 
             <intent-filter>
-                <action android:name="com.taoism.journeytoandroid.service.MyADILService"/>
+                <action android:name="com.taoism.journeytoandroid.service.MyADILService" />
             </intent-filter>
 
         </service>
@@ -272,6 +272,20 @@
             </intent-filter>
         </activity>
 
+        <!--***************************************   Effect   ******************************************************************************************-->
+
+        <activity
+            android:name=".effect.blurdemo.BlurDemoActivity"
+            android:label="effect/BlurDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".effect.blurdemo.BlurredActivity"
+            android:label="effect/BlurDemo" />
 
 
     </application>
