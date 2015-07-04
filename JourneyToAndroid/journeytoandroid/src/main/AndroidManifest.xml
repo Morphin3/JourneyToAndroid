@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.taoism.journeytoandroid">
+<manifest package="com.taoism.journeytoandroid"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name="com.taoism.journeytoandroid.MyApplication"
@@ -14,23 +14,23 @@
 
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="Pickrand.db" />
+            android:value="Pickrand.db"/>
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="5" />
+            android:value="5"/>
 
         <uses-library
             android:name="com.example.will.never.exist"
-            android:required="false" />
+            android:required="false"/>
 
 
         <!--各个目录的界面-->
         <activity android:name=".JourneyToAndroid">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
         </activity>
@@ -41,8 +41,8 @@
             android:name=".test.NewConstruction"
             android:label="Test/NewConstruction">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
 
         </activity>
@@ -54,8 +54,8 @@
             android:name=".customview.AspectRatioImageViewDemo"
             android:label="CustomView(自定义控件)/AspectRatioImageViewDemo(宽度适应屏幕，高度等比缩放)">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -63,8 +63,8 @@
             android:name=".customview.ShimmerTextViewDemo"
             android:label="CustomView(自定义控件)/ShimmerTextViewDemo(闪亮的文字)">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -72,8 +72,8 @@
             android:name=".customview.AlphaImageViewDemo"
             android:label="CustomView(自定义控件)/AlphaImageViewDemo(透明度渐变图片)">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -81,8 +81,8 @@
             android:name=".customview.WidthAdaptiveImageViewDemo"
             android:label="CustomView(自定义控件)/WidthAdaptiveImageViewDemo(宽度保持跟高度一致)">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -90,8 +90,8 @@
             android:name=".customview.DialViewDemoActivity"
             android:label="CustomView(自定义控件)/DialViewDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -99,11 +99,20 @@
             android:name=".customview.ExpandableTextViewDemoActivity"
             android:label="CustomView(自定义控件)/ExpandableTextView">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".customview.sortrecycleview.SortRecyclerViewDemoActivity"
+            android:label="CustomView(自定义控件)/SortRecyclerView"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
 
 
         <!--***************************************   Intent   ******************************************************************************************-->
@@ -113,8 +122,8 @@
             android:label="Intent/date属性"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
 
         </activity>
@@ -123,8 +132,8 @@
             android:name=".intent.IntentDemo"
             android:label="Intent/IntentDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
 
         </activity>
@@ -136,8 +145,8 @@
             android:name=".zzz.DeleteAndInstallDemo"
             android:label="ZZZ/DeleteAndInstallDemo(先触发删除自身弹窗，再触发安装弹窗，事实是删除自身后触发的安装弹窗也消失了)">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
 
         </activity>
@@ -148,8 +157,8 @@
             android:name=".activeandroid.ActiveAndroidDemo"
             android:label="ActiveAndroid/ActiveAndroidDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -159,8 +168,8 @@
             android:name=".smoothprogressbar.SmoothProgressBarDemo"
             android:label="SmoothProgressBar/SmoothProgressBarDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
 
         </activity>
@@ -171,8 +180,8 @@
             android:name=".animation.original.AnimationTestActivity"
             android:label="Animation/AnimationTest">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -180,17 +189,18 @@
             android:name=".animation.frameanimation.FrameAnimationDemoActivity"
             android:label="Animation/FrameAnimationDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
 
-        <activity android:name=".animation.propertyanimation.PropertyAnimationDemoActivity"
+        <activity
+            android:name=".animation.propertyanimation.PropertyAnimationDemoActivity"
             android:label="Animation/PropertyAnimationDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -201,8 +211,8 @@
             android:name=".deepintoview.LayoutInflaterActivity"
             android:label="DeepIntoView/LayoutInflater">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -218,8 +228,8 @@
             <!--android:value=".JourneyToAndroid"/>-->
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -230,8 +240,8 @@
             android:name=".broadcast.BroadcastDemo"
             android:label="BroadCast/BroadCastDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -242,8 +252,8 @@
             android:name=".view.ListViewDemo"
             android:label="View/ListViewDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -254,8 +264,8 @@
             android:name=".oom.ImageCacheDemoActivity"
             android:label="OOM/ImageCacheDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -266,8 +276,8 @@
             android:name=".service.ServiceDemoActivity"
             android:label="Service/ServiceDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -276,7 +286,7 @@
             android:process=":remote">
 
             <intent-filter>
-                <action android:name="com.taoism.journeytoandroid.service.MyADILService" />
+                <action android:name="com.taoism.journeytoandroid.service.MyADILService"/>
             </intent-filter>
 
         </service>
@@ -287,8 +297,8 @@
             android:name=".photogallery.PhotoGalleryActivity"
             android:label="PhotoGallery/PhotoGallery">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
@@ -298,14 +308,14 @@
             android:name=".effect.blurdemo.BlurDemoActivity"
             android:label="effect/BlurDemo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
 
         <activity
             android:name=".effect.blurdemo.BlurredActivity"
-            android:label="effect/BlurDemo" />
+            android:label="effect/BlurDemo"/>
 
 
     </application>
