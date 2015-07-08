@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<LinearLayout android:id="@+id/ll_container"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
 
     <EditText
@@ -16,6 +17,23 @@
 
     <Button
         android:id="@+id/btn_begin_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始动画"
+        />
+
+
+    <EditText
+        android:id="@+id/et_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+
+        android:hint="属性动画"/>
+
+
+    <Button
+        android:id="@+id/btn_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="开始动画"
