@@ -30,6 +30,7 @@ public class ViewSizeUtil {
         int height = view.getMeasuredHeight();
         int[] size = new int[]{width, height};
         return size;
+
     }
 
 
