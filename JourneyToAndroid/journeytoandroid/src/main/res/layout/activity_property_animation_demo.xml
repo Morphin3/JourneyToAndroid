@@ -1,43 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/ll_container"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-    <EditText
-        android:id="@+id/et_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        <EditText
+            android:id="@+id/et_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
 
-        android:hint="属性动画"/>
+            android:hint="属性动画"/>
 
 
-    <Button
-        android:id="@+id/btn_begin_animation"
+        <Button
+            android:id="@+id/btn_begin_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始动画"
+            />
+
+
+        <EditText
+            android:id="@+id/et_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+
+            android:hint="属性动画"/>
+
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始动画"
+            />
+
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始占满整屏动画"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="开始动画"
-        />
+        android:background="@color/red1"
+        android:orientation="horizontal"
+        >
+    </LinearLayout>
 
-
-    <EditText
-        android:id="@+id/et_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-
-        android:hint="属性动画"/>
-
-
-    <Button
-        android:id="@+id/btn_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="开始动画"
-        />
-
-
-</LinearLayout>
+</FrameLayout>

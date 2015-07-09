@@ -36,6 +36,9 @@ public class PropertyAnimationDemoActivity extends Activity {
 
     private LayoutTransition mTransitioner;
 
+    private LinearLayout ll_3;
+
+    int mScreenHeight = ScreenUtil.getDisplayHeight();
     int mScreenWidth = ScreenUtil.getDisplayWidth();
 
     @Override
@@ -44,30 +47,26 @@ public class PropertyAnimationDemoActivity extends Activity {
         setContentView(R.layout.activity_property_animation_demo);
         et_bottom = (EditText) findViewById(R.id.et_bottom);
         btn_begin_animation = (Button) findViewById(R.id.btn_begin_animation);
-
-
         btn_begin_animation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startAnimation();
             }
         });
-
-        ll_container = (LinearLayout)findViewById(R.id.ll_container);
-        et_2 = (EditText)findViewById(R.id.et_2);
-        btn_2 = (Button)findViewById(R.id.btn_2);
+//        ————————————————————————————————————————————————————————————————————————————————————————————————————————————
+        ll_container = (LinearLayout) findViewById(R.id.ll_container);
+        et_2 = (EditText) findViewById(R.id.et_2);
+        btn_2 = (Button) findViewById(R.id.btn_2);
 
         btn_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                et_2.setVisibility(et_2.getVisibility()==View.VISIBLE?View.INVISIBLE:View.VISIBLE);
+                et_2.setVisibility(et_2.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
             }
         });
 
-
         mTransitioner = new LayoutTransition();
         ll_container.setLayoutTransition(mTransitioner);
-
 
         // Adding
 //        ObjectAnimator animIn = ObjectAnimator.ofFloat(null, "rotationY", 90f, 0f).
@@ -94,7 +93,16 @@ public class PropertyAnimationDemoActivity extends Activity {
                 view.setRotationX(0f);
             }
         });
+//        ————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+        ll_3 = (LinearLayout) findViewById(R.id.ll_3);
+
+        findViewById(R.id.btn_3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startAnimation3();
+            }
+        });
 
 
 
@@ -115,6 +123,13 @@ public class PropertyAnimationDemoActivity extends Activity {
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
 //        ObjectAnimator.ofInt(wrapper, "X", 500).setDuration(5000).start();
+    }
+
+    private void startAnimation3(){
+        ViewWrapper wrapper=new ViewWrapper(ll_3);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(wrapper, "height",0,mScreenHeight).setDuration(1000);
+        objectAnimator.setInterpolator(new DecelerateInterpolator());
+        objectAnimator.start();
     }
 
 
@@ -152,16 +167,24 @@ public class PropertyAnimationDemoActivity extends Activity {
         }
 
 
-//        public int getWidth() {
-//            return mTarget.getLayoutParams().width;
-//        }
-//
-//        public void setWidth(int width) {
-//            mTarget.getLayoutParams().width = width;
-//            mTarget.requestLayout();
-//        }
-    }
+        public int getWidth() {
+            return mTarget.getLayoutParams().width;
+        }
 
+        public void setWidth(int width) {
+            mTarget.getLayoutParams().width = width;
+            mTarget.requestLayout();
+        }
+
+        public int getHeight() {
+            return mTarget.getLayoutParams().height;
+        }
+
+        public void setHeight(int height) {
+            mTarget.getLayoutParams().height = height;
+            mTarget.requestLayout();
+        }
+    }
 }
 
 
