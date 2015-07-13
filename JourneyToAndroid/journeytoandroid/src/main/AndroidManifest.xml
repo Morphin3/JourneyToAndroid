@@ -114,6 +114,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".customview.copyabletextview.CopyableTextViewDemoActivity"
+                  android:label="CustomView(自定义控件)/CopyableTextView"
+                  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
 
         <!--***************************************   Intent   ******************************************************************************************-->
 
