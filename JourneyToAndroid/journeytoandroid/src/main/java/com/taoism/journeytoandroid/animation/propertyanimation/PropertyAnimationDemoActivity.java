@@ -37,6 +37,7 @@ public class PropertyAnimationDemoActivity extends Activity {
     private LayoutTransition mTransitioner;
 
     private LinearLayout ll_3;
+    private LinearLayout ll_4;
 
     int mScreenHeight = ScreenUtil.getDisplayHeight();
     int mScreenWidth = ScreenUtil.getDisplayWidth();
@@ -96,6 +97,7 @@ public class PropertyAnimationDemoActivity extends Activity {
 //        ————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
         ll_3 = (LinearLayout) findViewById(R.id.ll_3);
+        ll_4 = (LinearLayout) findViewById(R.id.ll_4);
 
         findViewById(R.id.btn_3).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +105,14 @@ public class PropertyAnimationDemoActivity extends Activity {
                 startAnimation3();
             }
         });
+
+        findViewById(R.id.btn_4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startAnimation4();
+            }
+        });
+
 
 
 
@@ -127,10 +137,18 @@ public class PropertyAnimationDemoActivity extends Activity {
 
     private void startAnimation3(){
         ViewWrapper wrapper=new ViewWrapper(ll_3);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(wrapper, "height",0,mScreenHeight).setDuration(1000);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(wrapper, "height", 0, mScreenHeight).setDuration(1000);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
     }
+
+    private void startAnimation4(){
+        ViewWrapper wrapper=new ViewWrapper(ll_4);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(ll_4, "translationY", 0,400).setDuration(1000);
+        objectAnimator.setInterpolator(new DecelerateInterpolator());
+        objectAnimator.start();
+    }
+
 
 
     private static class ViewWrapper {

@@ -50,6 +50,13 @@
             android:text="开始占满整屏动画"
             />
 
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始从下面进入屏幕"
+            />
+
 
     </LinearLayout>
 
@@ -61,5 +68,15 @@
         android:orientation="horizontal"
         >
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_4"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/red1"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        />
+
 
 </FrameLayout>
