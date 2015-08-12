@@ -2,6 +2,48 @@
 <items version="2" >
 
     <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="698b40a43ecff2ebadc58b019ae236edd053fc67">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-420053c1acfe4935faa48ab6c001128a879038f8.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.2.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2ace5ecb0696f80c31a12bd4d00f49478c386f91">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-df56aa760ccf9c000b4badf2297a71426634488e.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-e9b9119902369b27fc461514b33014d2a8862ef3.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.5.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a610522dec6278bf9db2e8c8a4e63c631d050752">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-98a8f3a7f2cd1c9c9436b7338443c8a33250bbd7.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-f930df05b00b96d82976fbf1cd964acd68145e9d.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2ace5ecb0696f80c31a12bd4d00f49478c386f91">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-df56aa760ccf9c000b4badf2297a71426634488e.jar" />
+    </item>
+    <item
         jar="/Users/Morphin3/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -23,25 +65,18 @@
         <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-e38aa9898a3171bd2f8825eed213882898a660c1.jar" />
     </item>
     <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jar="/Users/Morphin3/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-fefaf644304e2d7a14d7ec8c2a8c85d072af23d0.jar" />
+        revision="20.0.0"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-31049bce853950266fa6513c6274b1253222c461.jar" />
     </item>
     <item
-        jar="/Users/Morphin3/Tools/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="/Users/Morphin3/Tools/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-7ee2490b6438d8062b5bd7d5aac35d568e4403a6.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-bd60b0f98f160e417efce8a415be8958fb9465be.jar" />
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-dca20b17b591972d10c2dffe40a440173320f55e.jar" />
     </item>
     <item
         jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.5.3/classes.jar"
@@ -51,60 +86,18 @@
         <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-41ef91d80655d7fa91e6970453902ba7466d651a.jar" />
     </item>
     <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-bd60b0f98f160e417efce8a415be8958fb9465be.jar" />
+    </item>
+    <item
         jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library-circular/1.0.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="68bb12d2c7c7b9fc856d1184760fb114ffc4cf30">
         <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-001148f7c370764efaff9b82f446d5ba673158ac.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-07678fbe64cdb030e2cc66e0b8cbdc86fb76592a.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library/1.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="698b40a43ecff2ebadc58b019ae236edd053fc67">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-420053c1acfe4935faa48ab6c001128a879038f8.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.2.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="2ace5ecb0696f80c31a12bd4d00f49478c386f91">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-df56aa760ccf9c000b4badf2297a71426634488e.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.5.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a610522dec6278bf9db2e8c8a4e63c631d050752">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-98a8f3a7f2cd1c9c9436b7338443c8a33250bbd7.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.2.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2ace5ecb0696f80c31a12bd4d00f49478c386f91">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-df56aa760ccf9c000b4badf2297a71426634488e.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-31049bce853950266fa6513c6274b1253222c461.jar" />
-    </item>
-    <item
-        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
-        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-ff31c4fa794f0537f8fdc47a460463adcaf786f7.jar" />
     </item>
     <item
         jar="/Users/Morphin3/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
@@ -126,6 +119,13 @@
         revision="20.0.0"
         sha1="68bb12d2c7c7b9fc856d1184760fb114ffc4cf30">
         <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/classes-001148f7c370764efaff9b82f446d5ba673158ac.jar" />
+    </item>
+    <item
+        jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-c9663327b3d480a520921cefb68fb1da820eb643.jar" />
     </item>
     <item
         jar="/Users/Morphin3/Programming/Morphin3/JourneyToAndroid/JourneyToAndroid/journeytoandroid/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.5.3/classes.jar"

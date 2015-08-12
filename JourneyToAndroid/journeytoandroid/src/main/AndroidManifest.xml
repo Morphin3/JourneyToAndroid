@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.taoism.journeytoandroid"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="com.taoism.journeytoandroid"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -114,9 +115,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".customview.copyabletextview.CopyableTextViewDemoActivity"
-                  android:label="CustomView(自定义控件)/CopyableTextView"
-                  >
+        <activity
+            android:name=".customview.copyabletextview.CopyableTextViewDemoActivity"
+            android:label="CustomView(自定义控件)/CopyableTextView"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
@@ -213,6 +215,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".animation.propertyanimation.BounceAnimationActivity"
+            android:label="Animation/BounceAnimationDemo"
+            android:hardwareAccelerated="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
 
         <!--***************************************   DeepIntoView   ******************************************************************************************-->
 
@@ -266,8 +278,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.nestedrecycleview.NestedRecyclerViewDemoActivity"
-                  android:label="View/NestedRecyclerViewDemo">
+        <activity
+            android:name=".view.nestedrecycleview.NestedRecyclerViewDemoActivity"
+            android:label="View/NestedRecyclerViewDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
@@ -337,8 +350,9 @@
 
         <!--***************************************   Util   ******************************************************************************************-->
 
-        <activity android:name=".utils.toastutil.ToastUtilDemoActivity"
-                  android:label="Utils/ToastUtil">
+        <activity
+            android:name=".utils.toastutil.ToastUtilDemoActivity"
+            android:label="Utils/ToastUtil">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>

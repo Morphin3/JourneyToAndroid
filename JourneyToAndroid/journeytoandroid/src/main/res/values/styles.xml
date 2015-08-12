@@ -329,7 +329,7 @@
 
 
 
-    <style name="StyledIV">
+    <style name="iv_common">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:adjustViewBounds">true</item>
@@ -346,10 +346,14 @@
 
 
 
-
-
-
-
+                    <!--Animation-->
+    <style name="PublishTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
 
 
 
