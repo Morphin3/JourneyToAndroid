@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     package="com.taoism.journeytoandroid"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        tools:replace="icon"
         android:name="com.taoism.journeytoandroid.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_journey"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
 
         <meta-data
             android:name="AA_DB_NAME"
@@ -217,8 +220,8 @@
 
         <activity
             android:name=".animation.propertyanimation.BounceAnimationActivity"
-            android:label="Animation/BounceAnimationDemo"
             android:hardwareAccelerated="true"
+            android:label="Animation/BounceAnimationDemo"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -285,8 +288,27 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
-
         </activity>
+
+        <activity
+            android:name=".view.observablescrollview.ObservableScrollViewDemoActivity"
+            android:label="View/ObservableScrollViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.observablescrollview.FlexibleSpaceWithImageWithViewPagerTabActivity"
+            android:label="View/title_activity_flexiblespacewithimagewithviewpagertab"
+            android:theme="@style/AppTheme.Toolbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
 
 
         <!--***************************************   OOM   ******************************************************************************************-->

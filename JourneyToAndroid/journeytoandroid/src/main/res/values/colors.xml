@@ -221,4 +221,11 @@
     <color name="holo_green_dark">#669900</color>
     <color name="holo_purple_dark">#9933cc</color>
     <color name="holo_red_dark">#cc0000</color>
+
+
+    <!--ObservableScrollView 相关-->
+    <color name="primary">#009688</color>
+    <color name="primaryDark">#00796b</color>
+    <color name="accent">#eeff41</color>
+    <color name="accentLight">#F4FF81</color>
 </resources>

@@ -48,4 +48,8 @@
     <string name="publish_type_cos">COS</string>
     <string name="publish_type_atricle">文章</string>
 
+
+    <!--ObservableScrollView 相关-->
+    <string name="title_activity_flexiblespacewithimagewithviewpagertab">Flexible Space</string>
+
 </resources>
