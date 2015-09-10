@@ -16,6 +16,7 @@
 
 package com.taoism.journeytoandroid.view.observablescrollview;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -108,10 +109,24 @@ public class FlexibleSpaceWithImageRecyclerViewFragment extends FlexibleSpaceWit
         ViewHelper.setTranslationY(recyclerViewBackground, Math.max(0, -scrollY + flexibleSpaceImageHeight));
 
         // Also pass this event to parent Activity
-        FlexibleSpaceWithImageWithViewPagerTabActivity parentActivity =
-                (FlexibleSpaceWithImageWithViewPagerTabActivity) getActivity();
-        if (parentActivity != null) {
-            parentActivity.onScrollChanged(scrollY, (ObservableRecyclerView) view.findViewById(R.id.scroll));
+        Activity parentActivity = getActivity();
+        if (parentActivity instanceof ObservableScrollViewDemoActivity) {
+            parentActivity = (ObservableScrollViewDemoActivity) parentActivity;
+            if (parentActivity != null) {
+                ((ObservableScrollViewDemoActivity) parentActivity).onScrollChanged(scrollY, (ObservableRecyclerView) view.findViewById(R.id.scroll));
+            }
+
+        } else if (parentActivity instanceof FlexibleSpaceWithImageWithViewPagerTabActivity) {
+            parentActivity = (FlexibleSpaceWithImageWithViewPagerTabActivity) parentActivity;
+            if (parentActivity != null) {
+                ((FlexibleSpaceWithImageWithViewPagerTabActivity) parentActivity).onScrollChanged(scrollY, (ObservableRecyclerView) view.findViewById(R.id.scroll));
+            }
         }
+
+//        FlexibleSpaceWithImageWithViewPagerTabActivity parentActivity =
+//                (FlexibleSpaceWithImageWithViewPagerTabActivity) getActivity();
+//        if (parentActivity != null) {
+//            parentActivity.onScrollChanged(scrollY, (ObservableRecyclerView) view.findViewById(R.id.scroll));
+//        }
     }
 }
