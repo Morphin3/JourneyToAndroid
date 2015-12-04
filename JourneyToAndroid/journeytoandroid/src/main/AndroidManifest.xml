@@ -383,6 +383,17 @@
 
         </activity>
 
+        <!--***************************************   Dialog   ******************************************************************************************-->
+        <!--android:theme="@style/AppCompatAppTheme"-->
+        <activity
+            android:name=".dialog.dialogfragment.DialogFramgentDemoActivity"
+            android:label="Dialog/DialogFragmentDemo"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
