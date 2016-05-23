@@ -6,6 +6,7 @@
 
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <application
         android:name="com.taoism.journeytoandroid.MyApplication"
@@ -407,6 +408,19 @@
                   android:label="Interaction/LaunchByBrowser">
 
         </activity>
+
+        <!--***************************************   NightMode   ******************************************************************************************-->
+        
+        <activity android:name=".nightmode.BrightnessNightModeDemoActivity"
+                  android:label="NightMode/BrightnessDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+
 
 
     </application>
