@@ -7,6 +7,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name="com.taoism.journeytoandroid.MyApplication"
@@ -15,6 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:replace="icon"
+        android:largeHeap="true"
         >
 
         <meta-data
@@ -419,6 +421,16 @@
             </intent-filter>
 
         </activity>
+
+        <!--***************************************   Image Processing   ******************************************************************************************-->
+        <activity android:name="com.taoism.journeytoandroid.imageprocessing.CompressImageDemoActivity"
+                  android:label="ImageProcessing/CompressImageDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+        
 
 
 

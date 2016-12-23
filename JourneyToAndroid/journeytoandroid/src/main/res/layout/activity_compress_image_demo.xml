@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:id="@+id/iv_original"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/red1"
+                />
+
+            <ImageView
+                android:id="@+id/iv_compressed"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/red1"
+                />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/btn_original"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="原文件转换成 bitmap,原文件按一定质量转换成 bitmap，再转换成文件"
+            />
+
+        <Button
+            android:id="@+id/btn_bitmap_to_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="原文件转换成 bitmap,原文件循环按一定质量转换成 bitmap，再转换成文件"
+            />
+
+        <Button
+            android:id="@+id/btn_to_target_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="原文件转换成目标大小的文件"
+            />
+
+
+
+    </LinearLayout>
+</ScrollView>
