@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <!--*******************************   AlphaImageView   *******************************-->
+    <!--定义一个属性-->
+    <!--<attr name="duration" format="integer"></attr>-->
+    <!--定义一个styleable对象来组合多个属性-->
+    <declare-styleable name="AlphaImageView">
+        <attr name="duration" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxCollapsedLines" format="integer"/>
+        <attr name="animDuration" format="integer"/>
+        <attr name="animAlphaStart" format="float"/>
+        <attr name="expandDrawable" format="reference"/>
+        <attr name="collapseDrawable" format="reference"/>
+    </declare-styleable>
+
+
+
+</resources>

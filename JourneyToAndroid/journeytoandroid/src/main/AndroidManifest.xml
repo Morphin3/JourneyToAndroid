@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.taoism.journeytoandroid"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name="com.taoism.journeytoandroid.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_journey"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme"
+        tools:replace="icon"
+        >
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="Pickrand.db"/>
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="5"/>
+
+        <uses-library
+            android:name="com.example.will.never.exist"
+            android:required="false"/>
+
+
+        <!--各个目录的界面-->
+        <activity android:name=".JourneyToAndroid">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.VIEW"/>-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--<category android:name="android.intent.category.BROWSABLE" />-->
+            <!--<data android:scheme="gacha"/>-->
+            <!--</intent-filter>-->
+
+
+        </activity>
+
+
+        <!--模仿AndroidSamples中ApiDemos构建项目结构成功后测试的界面-->
+        <activity
+            android:name=".test.NewConstruction"
+            android:label="Test/NewConstruction">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!--***************************************   CustomView   ******************************************************************************************-->
+        <!--各种自定义的控件，包括第三方-->
+        <activity
+            android:name=".customview.AspectRatioImageViewDemo"
+            android:label="CustomView(自定义控件)/AspectRatioImageViewDemo(宽度适应屏幕，高度等比缩放)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.ShimmerTextViewDemo"
+            android:label="CustomView(自定义控件)/ShimmerTextViewDemo(闪亮的文字)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.AlphaImageViewDemo"
+            android:label="CustomView(自定义控件)/AlphaImageViewDemo(透明度渐变图片)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.WidthAdaptiveImageViewDemo"
+            android:label="CustomView(自定义控件)/WidthAdaptiveImageViewDemo(宽度保持跟高度一致)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.DialViewDemoActivity"
+            android:label="CustomView(自定义控件)/DialViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.ExpandableTextViewDemoActivity"
+            android:label="CustomView(自定义控件)/ExpandableTextView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.sortrecycleview.SortRecyclerViewDemoActivity"
+            android:label="CustomView(自定义控件)/SortRecyclerView"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".customview.copyabletextview.CopyableTextViewDemoActivity"
+            android:label="CustomView(自定义控件)/CopyableTextView"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--***************************************   Intent   ******************************************************************************************-->
+
+        <activity
+            android:name=".intent.IntentDataAttr"
+            android:label="Intent/date属性"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".intent.IntentDemo"
+            android:label="Intent/IntentDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!--***************************************   ZZZ   ******************************************************************************************-->
+        <!--杂七杂八的Demo-->
+        <activity
+            android:name=".zzz.DeleteAndInstallDemo"
+            android:label="ZZZ/DeleteAndInstallDemo(先触发删除自身弹窗，再触发安装弹窗，事实是删除自身后触发的安装弹窗也消失了)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <!--***************************************   ActiveAndroid   ******************************************************************************************-->
+        <activity
+            android:name=".activeandroid.ActiveAndroidDemo"
+            android:label="ActiveAndroid/ActiveAndroidDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <!--***************************************   SmoothProgressBar   ******************************************************************************************-->
+
+        <activity
+            android:name=".smoothprogressbar.SmoothProgressBarDemo"
+            android:label="SmoothProgressBar/SmoothProgressBarDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+        <!--***************************************   Animation   ******************************************************************************************-->
+
+        <activity
+            android:name=".animation.original.AnimationTestActivity"
+            android:label="Animation/AnimationTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".animation.frameanimation.FrameAnimationDemoActivity"
+            android:label="Animation/FrameAnimationDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".animation.propertyanimation.PropertyAnimationDemoActivity"
+            android:label="Animation/PropertyAnimationDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".animation.propertyanimation.BounceAnimationActivity"
+            android:hardwareAccelerated="true"
+            android:label="Animation/BounceAnimationDemo"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <!--***************************************   DeepIntoView   ******************************************************************************************-->
+
+        <activity
+            android:name=".deepintoview.LayoutInflaterActivity"
+            android:label="DeepIntoView/LayoutInflater">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <!--***************************************   ActionBar   ******************************************************************************************-->
+
+        <activity
+            android:name=".actionbar.ActionBarDemoActivity"
+            android:label="ActionBar/ActionBarDemo"
+            android:parentActivityName=".JourneyToAndroid"
+            android:theme="@style/ActionBarCustomTheme">
+            <!--<meta-data-->
+            <!--android:name="android.support.PARENT_ACTIVITY"-->
+            <!--android:value=".JourneyToAndroid"/>-->
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--***************************************   BroadCast   ******************************************************************************************-->
+
+        <activity
+            android:name=".broadcast.BroadcastDemo"
+            android:label="BroadCast/BroadCastDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--***************************************   View   ******************************************************************************************-->
+
+        <activity
+            android:name=".view.ListViewDemo"
+            android:label="View/ListViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.nestedrecycleview.NestedRecyclerViewDemoActivity"
+            android:label="View/NestedRecyclerViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.observablescrollview.ObservableScrollViewDemoActivity"
+            android:label="View/ObservableScrollViewDemo"
+            android:theme="@style/AppTheme.Toolbar">
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.observablescrollview.FlexibleSpaceWithImageWithViewPagerTabActivity"
+            android:label="View/title_activity_flexiblespacewithimagewithviewpagertab"
+            android:theme="@style/AppTheme.Toolbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--***************************************   OOM   ******************************************************************************************-->
+
+        <activity
+            android:name=".oom.ImageCacheDemoActivity"
+            android:label="OOM/ImageCacheDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--***************************************   Service   ******************************************************************************************-->
+
+        <activity
+            android:name=".service.ServiceDemoActivity"
+            android:label="Service/ServiceDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.MyService"
+            android:process=":remote">
+
+            <intent-filter>
+                <action android:name="com.taoism.journeytoandroid.service.MyADILService"/>
+            </intent-filter>
+
+        </service>
+
+        <!--***************************************   PhotoGallery   ******************************************************************************************-->
+
+        <activity
+            android:name=".photogallery.PhotoGalleryActivity"
+            android:label="PhotoGallery/PhotoGallery">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <!--***************************************   Effect   ******************************************************************************************-->
+
+        <activity
+            android:name=".effect.blurdemo.BlurDemoActivity"
+            android:label="effect/BlurDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".effect.blurdemo.BlurredActivity"
+            android:label="effect/BlurDemo"/>
+
+        <!--***************************************   Util   ******************************************************************************************-->
+
+        <activity
+            android:name=".utils.toastutil.ToastUtilDemoActivity"
+            android:label="Utils/ToastUtil">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+        <!--***************************************   Dialog   ******************************************************************************************-->
+        <!--android:theme="@style/AppCompatAppTheme"-->
+        <activity
+            android:name=".dialog.dialogfragment.DialogFramgentDemoActivity"
+            android:label="Dialog/DialogFragmentDemo"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <!--***************************************   Interaction   ******************************************************************************************-->
+        <activity
+            android:name=".Interaction.LaunchedByBrowserActivityDemo"
+            android:label="Interaction/LaunchByBrowser">
+
+        </activity>
+
+        <!--***************************************   NightMode   ******************************************************************************************-->
+
+        <activity
+            android:name=".nightmode.BrightnessNightModeDemoActivity"
+            android:label="NightMode/BrightnessDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+        <!--***************************************   Image Processing   ******************************************************************************************-->
+        <activity
+            android:name="com.taoism.journeytoandroid.imageprocessing.CompressImageDemoActivity"
+            android:label="ImageProcessing/CompressImageDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--***************************************   Canvas   ******************************************************************************************-->
+
+        <activity
+            android:name=".canvas.CanvasDemo"
+            android:label="Canvas/CanvasDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
+
+    </application>
+
+</manifest>
