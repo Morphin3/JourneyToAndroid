@@ -10,4 +10,24 @@
         android:layout_height="wrap_content"
         />
 
+    <!--<com.taoism.journeytoandroid.canvas.CheckView-->
+        <!--android:id="@+id/cv"-->
+        <!--android:layout_width="500dp"-->
+        <!--android:layout_height="500dp"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/btn_check"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="check"-->
+        <!--/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/btn_uncheck"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="uncheck"-->
+        <!--/>-->
+
 </LinearLayout>

@@ -5,7 +5,7 @@
         <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
     <!--</style>-->
 
-    <style name="AppTheme" parent="android:Theme.Holo">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="spbStyle">@style/SmoothProgressBar</item>
         <item name="cpbStyle">@style/CircularProgressBar</item>
     </style>
