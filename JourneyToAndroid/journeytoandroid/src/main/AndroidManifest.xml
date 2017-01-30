@@ -447,6 +447,16 @@
 
         </activity>
 
+        <activity
+            android:name=".canvas.PieViewDemo"
+            android:label="Canvas/PieViewDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+
+        </activity>
+
 
     </application>
 
