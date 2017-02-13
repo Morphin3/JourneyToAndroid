@@ -438,7 +438,7 @@
         <!--***************************************   Canvas   ******************************************************************************************-->
 
         <activity
-            android:name=".canvas.CanvasDemo"
+            android:name="com.taoism.journeytoandroid.canvas.CanvasDemo"
             android:label="Canvas/CanvasDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -448,7 +448,7 @@
         </activity>
 
         <activity
-            android:name=".canvas.PieViewDemo"
+            android:name="com.taoism.journeytoandroid.canvas.PieViewDemo"
             android:label="Canvas/PieViewDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -458,7 +458,7 @@
         </activity>
 
         <activity
-            android:name=".canvas.PathDemo"
+            android:name="com.taoism.journeytoandroid.canvas.PathDemo"
             android:hardwareAccelerated="false"
             android:label="Canvas/PathDemo">
             <intent-filter>
@@ -466,6 +466,19 @@
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
 
+        </activity>
+
+
+        <!--***************************************   Database   ******************************************************************************************-->
+
+        <activity
+            android:name="com.taoism.journeytoandroid.database.DatabaseDemo"
+            android:hardwareAccelerated="false"
+            android:label="Database/DatabaseDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
         </activity>
 
 
