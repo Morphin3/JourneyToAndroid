@@ -481,6 +481,18 @@
             </intent-filter>
         </activity>
 
+        <!--***************************************   http   ******************************************************************************************-->
+
+        <activity
+            android:name="com.taoism.journeytoandroid.http.HttpDemoActivity"
+            android:hardwareAccelerated="false"
+            android:label="HTTP/HttpDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
 
     </application>
 
