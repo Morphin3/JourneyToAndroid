@@ -1,11 +1,13 @@
 package com.taoism.journeytoandroid.http;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
 import com.taoism.journeytoandroid.BaseActivity;
 import com.taoism.journeytoandroid.R;
+import com.taoism.journeytoandroid.thread.ThreadPoolUtil;
 
 import java.io.File;
 
@@ -20,6 +22,7 @@ public class HttpDemoActivity extends BaseActivity implements View.OnClickListen
 
     private TextView tvResponse;
 
+//    private String mUrl = "http://127.0.0.1:8001/?name=chenfei&website=www.baidu.com&user=admin&pass=123467";
     private String mUrl = "http://10.242.54.138:8001/?name=chenfei&website=www.baidu.com&user=admin&pass=123467";
 
     @Override
@@ -32,6 +35,7 @@ public class HttpDemoActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.btn_okhttp).setOnClickListener(this);
 
         tvResponse = (TextView) findViewById(R.id.tv_response);
+
     }
 
     @Override
@@ -41,7 +45,21 @@ public class HttpDemoActivity extends BaseActivity implements View.OnClickListen
                 requestByHttpClient();
                 break;
             case R.id.btn_httpurlconnection:
-                tvResponse.setText(NetUtils.get(mUrl));
+
+                ThreadPoolUtil.execute(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        final String response = NetUtils.get(mUrl);
+                        new Handler(getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvResponse.setText(response);
+                            }
+                        });
+                    }
+                });
+
                 break;
             case R.id.btn_okhttp:
                 //TODO implement
