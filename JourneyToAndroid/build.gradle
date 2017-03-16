@@ -7,11 +7,13 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
+        jcenter()
     }
 }

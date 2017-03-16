@@ -9,8 +9,9 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <!--android:name="com.taoism.journeytoandroid.MyApplication"-->
     <application
-        android:name="com.taoism.journeytoandroid.MyApplication"
+        android:name="com.taoism.journeytoandroid.JourneyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_journey"
         android:label="@string/app_name"
@@ -492,6 +493,21 @@
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
+
+
+        <!--***************************************   Tinker   ******************************************************************************************-->
+
+        <activity
+            android:name="com.taoism.journeytoandroid.http.HttpDemoActivity"
+            android:hardwareAccelerated="false"
+            android:label="HTTP/HttpDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
 
 
     </application>
