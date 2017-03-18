@@ -10,6 +10,7 @@ import com.taoism.journeytoandroid.tinker.Log.MyLogImp;
 import com.taoism.journeytoandroid.tinker.util.TinkerManager;
 import com.taoism.journeytoandroid.utils.applicationutil.AppProfile;
 import com.tencent.tinker.anno.DefaultLifeCycle;
+import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.loader.app.DefaultApplicationLike;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
@@ -76,6 +77,8 @@ public class JourneyApplicationLike extends DefaultApplicationLike {
         //installTinker after load multiDex
         //or you can put com.tencent.tinker.** to main dex
         TinkerManager.installTinker(this);
+
+        Tinker tinker = Tinker.with(getApplication());
 
 
 

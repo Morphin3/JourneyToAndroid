@@ -89,9 +89,9 @@ android {
 
     defaultConfig {
         applicationId "com.taoism.journeytoandroid"
-        minSdkVersion 20
+        minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
+        versionCode 2
         versionName "1.0"
 
         multiDexEnabled true
@@ -155,11 +155,11 @@ ext {
     //for normal build
     //old apk file to build patch apk
 //    tinkerOldApkPath = "${bakPath}/app-debug-1018-17-32-47.apk"
-    tinkerOldApkPath = "${bakPath}/journeytoandroid-debug.apk"
+    tinkerOldApkPath = "${bakPath}/journeytoandroid-debug-1.apk"
     //proguard mapping file to build patch apk
     tinkerApplyMappingPath = "${bakPath}/app-debug-1018-17-32-47-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/journeytoandroid-debug-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/journeytoandroid-debug-1-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
     tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"
@@ -402,7 +402,7 @@ if (buildWithTinker()) {
                     copy {
                         def fileNamePrefix = "${project.name}-${variant.baseName}"
 //                        def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}-${date}"
-                        def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}"
+                        def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}-" + "${versionCode}"
 
                         def destPath = hasFlavors ? file("${bakPath}/${project.name}-${date}/${variant.flavorName}") : bakPath
                         from variant.outputs.outputFile

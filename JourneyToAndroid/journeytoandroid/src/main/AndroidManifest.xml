@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <!--android:name="com.taoism.journeytoandroid.MyApplication"-->
     <application
         android:name="com.taoism.journeytoandroid.JourneyApplication"
@@ -498,14 +500,17 @@
         <!--***************************************   Tinker   ******************************************************************************************-->
 
         <activity
-            android:name="com.taoism.journeytoandroid.http.HttpDemoActivity"
+            android:name="com.taoism.journeytoandroid.tinker.demo.TinkerDemoActivity"
             android:hardwareAccelerated="false"
-            android:label="HTTP/HttpDemo">
+            android:label="Tinker/TinkerDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
+
+        <service android:name="com.taoism.journeytoandroid.tinker.service.SampleResultService"
+                 android:exported="false"/>
 
 
 

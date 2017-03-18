@@ -14,14 +14,20 @@
 
 
     <Button
+        android:id="@+id/btn_load_patch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Load Patch"
-        android:id="@+id/btn_load_patch"
         />
 
-    <Button
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--/>-->
+
+    <TextView
+        android:id="@+id/tv_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
