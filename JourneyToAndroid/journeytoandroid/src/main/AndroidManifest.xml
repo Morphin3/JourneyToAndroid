@@ -476,7 +476,6 @@
 
         <activity
             android:name="com.taoism.journeytoandroid.database.DatabaseDemo"
-            android:hardwareAccelerated="false"
             android:label="Database/DatabaseDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -488,7 +487,6 @@
 
         <activity
             android:name="com.taoism.journeytoandroid.http.HttpDemoActivity"
-            android:hardwareAccelerated="false"
             android:label="HTTP/HttpDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -501,7 +499,6 @@
 
         <activity
             android:name="com.taoism.journeytoandroid.tinker.demo.TinkerDemoActivity"
-            android:hardwareAccelerated="false"
             android:label="Tinker/TinkerDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -509,10 +506,20 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.taoism.journeytoandroid.tinker.service.SampleResultService"
-                 android:exported="false"/>
+        <service
+            android:name="com.taoism.journeytoandroid.tinker.service.SampleResultService"
+            android:exported="false"/>
 
+        <!--***************************************   Performance   ******************************************************************************************-->
 
+        <activity
+            android:name="com.taoism.journeytoandroid.performance.PerformanceDemo"
+            android:label="Performane/PerformanceDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
 
 
     </application>
