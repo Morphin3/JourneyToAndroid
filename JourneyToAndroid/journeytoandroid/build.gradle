@@ -21,7 +21,8 @@ dependencies {
     compile 'com.github.castorflex.smoothprogressbar:library:1.0.0'
     compile 'com.github.castorflex.smoothprogressbar:library-circular:1.0.1'
 
-//    compile 'com.facebook.fresco:fresco:0.5.3+'
+    compile 'com.facebook.fresco:fresco:1.1.0'
+
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.2'
 
 
