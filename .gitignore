@@ -1,3 +1,5 @@
 .DS_Store
 /.idea
 *.iml
+JourneyToAndroid/journeytoandroid/libs/AndroidHorizontalListView/build/intermediates
+JourneyToAndroid/journeytoandroid/libs/AndroidHorizontalListView/build/outputs
