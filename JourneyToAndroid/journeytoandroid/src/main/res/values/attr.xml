@@ -2,8 +2,6 @@
 <resources>
 
 
-
-
     <!--*******************************   AlphaImageView   *******************************-->
     <!--定义一个属性-->
     <!--<attr name="duration" format="integer"></attr>-->
@@ -20,6 +18,20 @@
         <attr name="collapseDrawable" format="reference"/>
     </declare-styleable>
 
+
+    <declare-styleable name="VideoSeekView">
+        <attr name="leftThumbDrawable" format="reference"/>
+        <attr name="rightThumbDrawable" format="reference"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="totalTime" format="integer"/>
+        <attr name="currentTime" format="integer"/>
+        <attr name="minTime" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="VideoSeekViewTheme">
+        <attr name="videoSeekViewStyle" format="reference"/>
+    </declare-styleable>
 
 
 </resources>
