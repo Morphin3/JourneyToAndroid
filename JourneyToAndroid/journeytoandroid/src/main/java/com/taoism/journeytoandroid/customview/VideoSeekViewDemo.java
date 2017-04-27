@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class VideoSeekViewDemo extends BaseActivity {
     private HorizontalListView hlv;
 
     private TextView tvTime;
+    private Button mBtnRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +38,40 @@ public class VideoSeekViewDemo extends BaseActivity {
         VideoSeekView vsv = (VideoSeekView) findViewById(R.id.vsv);
         tvTime = (TextView) findViewById(R.id.tv_time);
 
+        mBtnRefresh = (Button) findViewById(R.id.btn_refresh);
+
         vsv.setSeekListener(new VideoSeekView.SeekListener() {
+
             @Override
-            public void onSeek(int currentTime, int totalTime, int minTime, int currentTimeAxisWidth, int totalTimeAxisWidth, int minTimeAxisWidth) {
+            public void onStartSeek() {
+
+            }
+
+            @Override
+            public void onSeek(VideoSeekView videoSeekView,int currentTime, int totalTime, int minTime, float currentTimeAxisWidth, float totalTimeAxisWidth, float minTimeAxisWidth) {
                 tvTime.setText(currentTime + "/" + totalTime);
             }
+
+            @Override
+            public void onStopSeek() {
+
+            }
         });
+
+        vsv.setActualDuration(33000);
 
         hlv = (HorizontalListView) findViewById(R.id.hlv);
 
         hlv.setAdapter(new HorizontalAdapter(this));
+
+        mBtnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewGroup.LayoutParams lp = mBtnRefresh.getLayoutParams();
+                lp.width = (int) (lp.width * Math.random() * 10);
+                mBtnRefresh.setLayoutParams(lp);
+            }
+        });
 
     }
 
@@ -75,15 +101,15 @@ public class VideoSeekViewDemo extends BaseActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder viewHolder = null;
-            if(convertView == null){
+            if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.item_photo_gallery, null);
 
                 viewHolder = new ViewHolder();
                 viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_picture);
-                viewHolder.textView = (TextView)convertView.findViewById(R.id.tv_title);
+                viewHolder.textView = (TextView) convertView.findViewById(R.id.tv_title);
 
                 convertView.setTag(viewHolder);
-            }else{
+            } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             return convertView;

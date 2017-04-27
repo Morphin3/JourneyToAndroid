@@ -27,6 +27,7 @@
         <attr name="totalTime" format="integer"/>
         <attr name="currentTime" format="integer"/>
         <attr name="minTime" format="integer"/>
+        <attr name="actualDuration" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="VideoSeekViewTheme">

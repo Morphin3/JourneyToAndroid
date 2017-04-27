@@ -32,9 +32,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:borderWidth="2dp"
-            app:currentTime="60"
+            app:currentTime="60000"
             app:rightThumbDrawable="@drawable/ic_right_thumb"
-            app:totalTime="60"
+            app:totalTime="60000"
+            />
+
+        <Button
+            android:id="@+id/btn_refresh"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="refresh"
             />
 
     </FrameLayout>

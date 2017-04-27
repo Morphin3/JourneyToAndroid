@@ -1,6 +1,5 @@
 package com.taoism.journeytoandroid.customview.videocutseekview;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -30,12 +28,18 @@ import com.taoism.journeytoandroid.R;
 public class VideoSeekView extends ViewGroup {
 
     public interface SeekListener {
-        void onSeek(int currentTime,
+
+        void onStartSeek();
+
+        void onSeek(VideoSeekView videoSeekView,
+                    int currentTime,
                     int totalTime,
                     int minTime,
-                    int currentTimeAxisWidth,
-                    int totalTimeAxisWidth,
-                    int minTimeAxisWidth);
+                    float currentTimeAxisWidth,
+                    float totalTimeAxisWidth,
+                    float minTimeAxisWidth);
+
+        void onStopSeek();
     }
 
     private static final String TAG = VideoSeekView.class.getSimpleName();
@@ -57,14 +61,17 @@ public class VideoSeekView extends ViewGroup {
     private int mTotalTime;
     private int mCurrentTime;
     private int mMinTime;
+    private int mDuration;
 
     private final int default_frame_color = Color.rgb(0x49, 0xC1, 0x20);
     private final float default_frame_width;
     private Drawable default_right_thumb_drawable;
-    private int default_total_time = 60;
-    private int default_current_time = 60;
-    private int default_min_time = 2;
+    private int default_total_time = 60 * SECOND;
+    private int default_min_time = 2 * SECOND;
+    private int default_duration = default_total_time;
+    private int default_current_time = default_duration;
 
+    private static final int SECOND = 1000;
 
     private static final int TOP = 0x15;
     private static final int LEFT = 0x16;
@@ -92,14 +99,18 @@ public class VideoSeekView extends ViewGroup {
 
     private int mDefualtWidth = 500, mDefaultHeight = 100;
 
-    private int mTotalTimeAxisWidth;
-    private int mCurrentTimeAxisWidth;
-    private int mMinTimeAxisWidth;
+    private float mTotalTimeAxisWidth;
+    private float mCurrentTimeAxisWidth;
+    private float mMinTimeAxisWidth;
+    private float mDurationTimeAxisWidth;
 
 
     private SeekListener mInnerSeekListener;
 
     private SeekListener mSeekListener;
+
+    private int mFrameRangeViewOldWidth = 0;
+    private int mFrameRangeViewOldHeight = 0;
 
     public VideoSeekView(Context context) {
         this(context, null);
@@ -110,20 +121,13 @@ public class VideoSeekView extends ViewGroup {
     }
 
     public VideoSeekView(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, R.style.VideoSeekView);
-
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public VideoSeekView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-
+        super(context, attrs, defStyleAttr);
         default_frame_width = dp2px(0.5f);
 
         final TypedArray typedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.VideoSeekView,
                 defStyleAttr,
-                defStyleRes);
+                R.style.VideoSeekView);
 
         try {
 
@@ -134,6 +138,7 @@ public class VideoSeekView extends ViewGroup {
             mTotalTime = typedArray.getInteger(R.styleable.VideoSeekView_totalTime, default_total_time);
             mCurrentTime = typedArray.getInteger(R.styleable.VideoSeekView_currentTime, default_current_time);
             mMinTime = typedArray.getInteger(R.styleable.VideoSeekView_minTime, default_min_time);
+            mDuration = typedArray.getInteger(R.styleable.VideoSeekView_actualDuration, default_duration);
 
         } finally {
             typedArray.recycle();
@@ -142,8 +147,8 @@ public class VideoSeekView extends ViewGroup {
 
         init();
 
-
     }
+
 
     private void init() {
 
@@ -155,12 +160,27 @@ public class VideoSeekView extends ViewGroup {
 
         mFrameRangeView.setOnTouchListener(mFrameRangeView);
         mInnerSeekListener = new SeekListener() {
+
             @Override
-            public void onSeek(int currentTime, int totalTime, int minTime, int currentTimeAxisWidth, int totalTimeAxisWidth, int minTimeAxisWidth) {
+            public void onStartSeek() {
+                if (mSeekListener != null) {
+                    mSeekListener.onStartSeek();
+                }
+            }
+
+            @Override
+            public void onSeek(VideoSeekView videoSeekView, int currentTime, int totalTime, int minTime, float currentTimeAxisWidth, float totalTimeAxisWidth, float minTimeAxisWidth) {
                 Log.i(TAG, "mCurrentTimeAxisWidth:" + mCurrentTimeAxisWidth + "/ mTotalTimeAxisWidth:" + mTotalTimeAxisWidth);
                 Log.i(TAG, "current:" + mCurrentTime + "/ total:" + mTotalTime);
                 if (mSeekListener != null) {
-                    mSeekListener.onSeek(currentTime, totalTime, minTime, currentTimeAxisWidth, totalTimeAxisWidth, minTimeAxisWidth);
+                    mSeekListener.onSeek(videoSeekView, currentTime, totalTime, minTime, currentTimeAxisWidth, totalTimeAxisWidth, minTimeAxisWidth);
+                }
+            }
+
+            @Override
+            public void onStopSeek() {
+                if (mSeekListener != null) {
+                    mSeekListener.onStopSeek();
                 }
             }
         };
@@ -177,7 +197,7 @@ public class VideoSeekView extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.i(TAG, "VideoSeekView onMeasure");
 
         int width = 0;
         int height = 0;
@@ -192,6 +212,7 @@ public class VideoSeekView extends ViewGroup {
             height = Math.max(child.getMeasuredHeight(), height);
         }
 
+
         setMeasuredDimension(width, height);
 
     }
@@ -199,6 +220,8 @@ public class VideoSeekView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
+        Log.i(TAG, "VideoSeekView onLayout");
 
         final int parentLeft = getPaddingLeft();
         final int parentRight = r - l - getPaddingRight();
@@ -215,8 +238,20 @@ public class VideoSeekView extends ViewGroup {
         for (int i = 0; i < count; i++) {
 
             final View child = getChildAt(i);
-            final int width = child.getMeasuredWidth();
-            final int height = child.getMeasuredHeight();
+            int width = child.getMeasuredWidth();
+            int height = child.getMeasuredHeight();
+
+            if (child instanceof FrameRangeView) {
+
+                if (mFrameRangeViewOldWidth != 0) {
+                    width = mFrameRangeViewOldWidth;
+                }
+
+                if (mFrameRangeViewOldHeight != 0) {
+                    height = mFrameRangeViewOldHeight;
+                }
+
+            }
 
             if (child.getVisibility() != GONE) {
                 child.layout(childLeft, childTop, childLeft + width, childTop + height);
@@ -225,7 +260,6 @@ public class VideoSeekView extends ViewGroup {
 
             }
 
-//            childLeft += width;
         }
 
 
@@ -263,13 +297,16 @@ public class VideoSeekView extends ViewGroup {
 //        if (y < 40) {
 //            return TOP;
 //        }
-        if (right - left - x < mRightThumbDrawable.getIntrinsicWidth()) {
+//        if (right - left - x < mRightThumbDrawable.getIntrinsicWidth() ||
+        if (x > mCurrentTimeAxisWidth &&
+                x < mCurrentTimeAxisWidth + mRightThumbDrawable.getIntrinsicWidth()) {
             return RIGHT;
         }
+
 //        if (bottom - top - y < 40) {
 //            return BOTTOM;
 //        }
-        return NONE;
+        return CENTER;
     }
 
 
@@ -332,15 +369,16 @@ public class VideoSeekView extends ViewGroup {
                 }
                 if (dragDirection != CENTER) {
                     v.layout(oriLeft, oriTop, oriRight, oriBottom);
-                    mCurrentTimeAxisWidth = mFrameRangeView.getWidth() - mRightThumbDrawable.getIntrinsicWidth();
-                    mCurrentTime = (int) Math.ceil(((float) mCurrentTimeAxisWidth / mTotalTimeAxisWidth * mTotalTime));
-                    mInnerSeekListener.onSeek(mCurrentTime, mTotalTime, mMinTime, mCurrentTimeAxisWidth, mTotalTimeAxisWidth, mMinTimeAxisWidth);
-
+                    mFrameRangeViewOldWidth = oriRight - oriLeft;
+                    mFrameRangeViewOldHeight = oriBottom - oriTop;
                 }
                 lastX = (int) event.getRawX();
                 lastY = (int) event.getRawY();
                 break;
             case MotionEvent.ACTION_UP:
+                if (dragDirection == RIGHT) {
+                    mInnerSeekListener.onStopSeek();
+                }
                 dragDirection = NONE;
                 break;
         }
@@ -354,15 +392,18 @@ public class VideoSeekView extends ViewGroup {
      */
     private void right(View v, int dx) {
 
-        oriRight += dx;
+        mCurrentTimeAxisWidth += dx;
 //        View parent = (View) getParent();
         int parentWidth = getWidth();
-        if (oriRight > parentWidth + offset) {
-            oriRight = parentWidth + offset;
+        if (mCurrentTimeAxisWidth > mDurationTimeAxisWidth + offset) {
+            mCurrentTimeAxisWidth = mDurationTimeAxisWidth + offset;
         }
-        if (oriRight - oriLeft - mLeftThumbDrawable.getIntrinsicWidth() - 2 * offset < mMinTimeAxisWidth) {
-            oriRight = oriLeft + mLeftThumbDrawable.getIntrinsicWidth() + 2 * offset + mMinTimeAxisWidth;
+
+
+        if (mCurrentTimeAxisWidth - 2 * offset < mMinTimeAxisWidth) {
+            mCurrentTimeAxisWidth = 2 * offset + mMinTimeAxisWidth;
         }
+
     }
 
 
@@ -370,8 +411,40 @@ public class VideoSeekView extends ViewGroup {
         mTotalTime = totalTime;
     }
 
+    public void setMinTime(int minTime) {
+        mMinTime = minTime;
+    }
+
+    public void setActualDuration(int duration) {
+        mDuration = duration;
+    }
+
     public void setSeekListener(SeekListener seekListener) {
         mSeekListener = seekListener;
+    }
+
+    public int getCurrentTime() {
+        return mCurrentTime;
+    }
+
+    public int getDuration() {
+        return mDuration;
+    }
+
+    public int getTotalTime() {
+        return mTotalTime;
+    }
+
+    public float getCurrentTimeAxisWidth() {
+        return mCurrentTimeAxisWidth;
+    }
+
+    public float getDurationTimeAxisWidth() {
+        return mDurationTimeAxisWidth;
+    }
+
+    public float getTotalTimeAxisWidth() {
+        return mTotalTimeAxisWidth;
     }
 
     class FrameRangeView extends View implements View.OnTouchListener {
@@ -398,7 +471,7 @@ public class VideoSeekView extends ViewGroup {
 
             setLayoutParams(new VideoSeekView.LayoutParams(
                     VideoSeekView.LayoutParams.MATCH_PARENT,
-                    VideoSeekView.LayoutParams.WRAP_CONTENT
+                    VideoSeekView.LayoutParams.MATCH_PARENT
             ));
 
 
@@ -420,7 +493,8 @@ public class VideoSeekView extends ViewGroup {
 
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+            Log.i(TAG, "FrameRangeView onMeasure");
 
             final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
             final int widthSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -442,6 +516,7 @@ public class VideoSeekView extends ViewGroup {
                 width = mDefualtWidth;
             }
 
+
             //Measure Height
             if (heightMode == MeasureSpec.EXACTLY) {
                 //Must be this size
@@ -456,22 +531,42 @@ public class VideoSeekView extends ViewGroup {
 
             setMeasuredDimension(width, height);
 
-            mTotalTimeAxisWidth = mFrameRangeView.getMeasuredWidth() - mRightThumbDrawable.getIntrinsicWidth();
-            mMinTimeAxisWidth = (int) (((float) mMinTime / mTotalTime) * mTotalTimeAxisWidth);
+            mTotalTimeAxisWidth = mFrameRangeView.getMeasuredWidth() - mRightThumbDrawable.getIntrinsicWidth() - mBorderWidth;
+            mMinTimeAxisWidth = ((float) mMinTime / mTotalTime) * mTotalTimeAxisWidth;
 
-            Log.i(TAG, "mMinTimeAxisWidth:" + mMinTimeAxisWidth
-            );
+            if (mDuration > 0 && mDuration < mTotalTime) {
+                mDurationTimeAxisWidth = (int) ((float) mDuration / mTotalTime * mTotalTimeAxisWidth);
+            } else {
+                mDurationTimeAxisWidth = mTotalTimeAxisWidth;
+            }
+
+            mCurrentTime = getCorrectCurrentTime();
+
+            mCurrentTimeAxisWidth = (int) (
+                    ((float) mCurrentTime /
+                            mTotalTime)
+                            * mTotalTimeAxisWidth);
+
+            Log.i(TAG, "mMinTimeAxisWidth:" + mMinTimeAxisWidth);
 
 
         }
 
 
-
         @Override
         protected void onDraw(Canvas canvas) {
 
-            canvas.drawPath(mBorderPath, mBorderPaint);
+            Log.i(TAG, "FrameRangeView onDraw");
 
+            mBorderPath.reset();
+
+            mBorderPath.moveTo(0, 0);
+            mBorderPath.lineTo(mCurrentTimeAxisWidth, 0);
+            mBorderPath.moveTo(0, 0);
+            mBorderPath.lineTo(0, getHeight());
+            mBorderPath.lineTo(mCurrentTimeAxisWidth, getHeight());
+
+            canvas.drawPath(mBorderPath, mBorderPaint);
 
 //            NinePatchDrawable ninePatchRightThumb;
 //
@@ -479,7 +574,7 @@ public class VideoSeekView extends ViewGroup {
 
             if (mRightThumbDrawable != null) {
                 canvas.save();
-                canvas.translate(mFrameRangeView.getWidth() - mRightThumbDrawable.getIntrinsicWidth(), 0);
+                canvas.translate(mCurrentTimeAxisWidth, 0);
                 mRightThumbDrawable.setBounds(0, 0, mRightThumbDrawable.getIntrinsicWidth(), getHeight());
                 mRightThumbDrawable.draw(canvas);
                 canvas.restore();
@@ -489,17 +584,20 @@ public class VideoSeekView extends ViewGroup {
 
         }
 
+
         @Override
         protected void onSizeChanged(int w, int h, int oldw, int oldh) {
             super.onSizeChanged(w, h, oldw, oldh);
 
-            mBorderPath.reset();
+            Log.i(TAG, "FrameRangeView onSizeChanged");
 
-            mBorderPath.moveTo(0, 0);
-            mBorderPath.lineTo(w, 0);
-            mBorderPath.moveTo(0, 0);
-            mBorderPath.lineTo(0, h);
-            mBorderPath.lineTo(w, h);
+//            mBorderPath.reset();
+//
+//            mBorderPath.moveTo(0, 0);
+//            mBorderPath.lineTo(w, 0);
+//            mBorderPath.moveTo(0, 0);
+//            mBorderPath.lineTo(0, h);
+//            mBorderPath.lineTo(w, h);
 
         }
 
@@ -520,6 +618,10 @@ public class VideoSeekView extends ViewGroup {
                     dragDirection = getDirection(mFrameRangeView,
                             (int) event.getX(),
                             (int) event.getY());
+
+                    if(dragDirection == RIGHT){
+                        mInnerSeekListener.onStartSeek();
+                    }
                     break;
             }
 
@@ -527,10 +629,30 @@ public class VideoSeekView extends ViewGroup {
 
             mFrameRangeView.invalidate();
 
-            return dragDirection == NONE ? false : true;
+            if (dragDirection != CENTER) {
+                mCurrentTime = (int) ((mCurrentTimeAxisWidth / mTotalTimeAxisWidth * mTotalTime));
+                if (mCurrentTime < mMinTime) {
+                    mCurrentTime = mMinTime;
+                }
+
+                mCurrentTime = getCorrectCurrentTime();
+
+                mInnerSeekListener.onSeek(VideoSeekView.this, mCurrentTime, mTotalTime, mMinTime, mCurrentTimeAxisWidth, mTotalTimeAxisWidth, mMinTimeAxisWidth);
+            }
+
+            return dragDirection != CENTER ? true : false;
         }
 
 
+    }
+
+    private int getCorrectCurrentTime() {
+        int minTime = Math.min(mDuration, mTotalTime);
+
+        if (mCurrentTime > minTime) {
+            mCurrentTime = minTime;
+        }
+        return mCurrentTime;
     }
 
 
