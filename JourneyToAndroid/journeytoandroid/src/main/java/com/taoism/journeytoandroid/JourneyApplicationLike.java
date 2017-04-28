@@ -5,11 +5,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.StrictMode;
 import android.support.multidex.MultiDex;
 
 import com.activeandroid.ActiveAndroid;
-import com.taoism.journeytoandroid.tinker.BuildInfo;
 import com.taoism.journeytoandroid.tinker.Log.MyLogImp;
 import com.taoism.journeytoandroid.tinker.util.TinkerManager;
 import com.taoism.journeytoandroid.utils.applicationutil.AppProfile;
@@ -57,24 +55,24 @@ public class JourneyApplicationLike extends DefaultApplicationLike {
         Context context = getApplication().getApplicationContext();
         AppProfile.sContext = context;
 
-        if (BuildInfo.DEBUG) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectDiskReads()
-                    .detectDiskWrites()
-                    .detectNetwork().
-                            detectCustomSlowCalls().
-                            penaltyLog().
-                            build());
-
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectActivityLeaks()
-                    .detectLeakedClosableObjects()
-                    .detectLeakedRegistrationObjects()
-                    .detectLeakedSqlLiteObjects()
-                    .penaltyLog()
-                    .penaltyDeath()
-                    .build());
-        }
+//        if (BuildInfo.DEBUG) {
+//            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+//                    .detectDiskReads()
+//                    .detectDiskWrites()
+//                    .detectNetwork().
+//                            detectCustomSlowCalls().
+//                            penaltyLog().
+//                            build());
+//
+//            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+//                    .detectActivityLeaks()
+//                    .detectLeakedClosableObjects()
+//                    .detectLeakedRegistrationObjects()
+//                    .detectLeakedSqlLiteObjects()
+//                    .penaltyLog()
+//                    .penaltyDeath()
+//                    .build());
+//        }
 
     }
 
