@@ -51,9 +51,10 @@ public class TimeUtil {
             }
         }
     }
- /**
-    消息页距离活动结束时间
-  **/
+
+    /**
+     * 消息页距离活动结束时间
+     **/
     public static String formatActivityEndTime(long time) {
         long timebefore = SystemUtil.getCurrentTimeMillis() - time;
         if (timebefore >= 0) {
@@ -200,6 +201,10 @@ public class TimeUtil {
         Time time = new Time();
         time.set(when);
         return time.monthDay + "";
+    }
+
+    public static String ms(long delta) {
+        return String.format("%d ms", delta);
     }
 
 }
