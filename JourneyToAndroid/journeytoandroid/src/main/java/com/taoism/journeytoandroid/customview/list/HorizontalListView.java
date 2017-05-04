@@ -46,6 +46,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
 
+import com.taoism.journeytoandroid.R;
 import com.taoism.journeytoandroid.utils.screenutil.ScreenUtil;
 
 import java.util.LinkedList;
@@ -79,6 +80,16 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	private float mLastMotionY;
 	private boolean isIntercept = false;
 
+
+	public  static final int MODE_SCROLL_CONTENT = 0;
+	public  static final int MODE_SCROLL_CONTAINER = 1;
+	private int mScrollMode =  MODE_SCROLL_CONTENT;
+
+	private int mMaxScrollX = Integer.MAX_VALUE;
+
+	private boolean mIsListViewReachRightEdge = false;
+
+
 	public HorizontalListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initView();
@@ -86,7 +97,9 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 //		initBounceDistance();
 	}
 
-	public void setForceFocus(boolean flag) { this.forceFocus = flag; }
+	public void setForceFocus(boolean flag) {
+		this.forceFocus = flag;
+	}
 
 	private synchronized void initView() {
 		mLeftViewIndex = -1;
@@ -188,12 +201,12 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 
 	public float getCurrentX() {
-		return (float)mCurrentX;
+		return (float) mCurrentX;
 	}
 
 	@Override
 	protected synchronized void onLayout(boolean changed, int left, int top,
-			int right, int bottom) {
+										 int right, int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
 
 		if (mAdapter == null) {
@@ -220,6 +233,10 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		if (mNextX >= mMaxX) {
 			mNextX = mMaxX;
 			mScroller.forceFinished(true);
+
+			mContainerScrollListener.onReachContainerEdge();
+		}else{
+			mContainerScrollListener.onLeaveContainerEdge();
 		}
 
 		int dx = mCurrentX - mNextX;
@@ -230,10 +247,12 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
 		mCurrentX = mNextX;
 
+
 		if (!mScroller.isFinished()) {
 			post(requestLayout);
-		}else{
-			if (dx != 0 && mScrollListener != null) {
+		} else {
+			if (mScrollListener != null) {
+//			if (dx != 0 && mScrollListener != null) {
 				mScrollListener.onScroll(null, mLeftViewIndex, mRightViewIndex
 						- mLeftViewIndex, mAdapter.getCount());
 			}
@@ -361,7 +380,41 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	public boolean onTouchEvent(MotionEvent ev) {
 //		mGesture.onTouchEvent(ev);
 //		return super.onTouchEvent(ev);
-		return mGesture.onTouchEvent(ev);
+
+//		return mGesture.onTouchEvent(ev);
+
+		if (mScrollMode == MODE_SCROLL_CONTENT) {
+			return mGesture.onTouchEvent(ev);
+		} else {
+			if(ev.getAction() == MotionEvent.ACTION_MOVE){
+				float distanceX = mLastMotionX - ev.getX();
+				mLastMotionX = ev.getX();
+
+				if (getScrollX() + distanceX > mMaxScrollX) {
+					Log.i("HorizontalListView", "scrollTo(mMaxScrollX, 0);");
+					scrollTo(mMaxScrollX, 0);
+				} else if (getScrollX() + distanceX < 0) {
+					Log.i("HorizontalListView", "scrollTo(0, 0);");
+					scrollTo(0, 0);
+					if(mContainerScrollListener != null){
+						mContainerScrollListener.onLeaveContainerEdge();
+					}
+				} else {
+					Log.i("HorizontalListView", "scrollBy((int) distanceX, 0);");
+					scrollBy((int) distanceX, 0);
+
+					if(mContainerScrollListener != null){
+						mContainerScrollListener.onContainerScroll();
+					}
+				}
+
+
+
+				return true;
+			}else{
+				return true;
+			}
+		}
 	}
 
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -373,7 +426,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 
 	protected boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-                              float velocityY) {
+							  float velocityY) {
 		synchronized (HorizontalListView.this) {
 			mScroller.fling(mNextX, 0, (int) -velocityX, 0, 0, mMaxX, 0, 0);
 		}
@@ -383,7 +436,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 
 	protected boolean onDown(MotionEvent e) {
-//		mScroller.forceFinished(true);
+		mScroller.forceFinished(true);
 		return true;
 	}
 
@@ -392,6 +445,19 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	public void setOnScrollListener(OnScrollListener l) {
 		this.mScrollListener = l;
 	}
+
+	private OnContainerScrollListener mContainerScrollListener;
+
+	public interface OnContainerScrollListener {
+		void onContainerScroll();
+		void onReachContainerEdge();
+		void onLeaveContainerEdge();
+	}
+
+	public void setOnContainerScrollListener(OnContainerScrollListener onContainerScrollListener){
+        this.mContainerScrollListener = onContainerScrollListener;
+	}
+
 
 	private OnGestureListener mOnGesture = new GestureDetector.SimpleOnGestureListener() {
 
@@ -402,20 +468,24 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-                               float velocityY) {
+							   float velocityY) {
+
 			return HorizontalListView.this
 					.onFling(e1, e2, velocityX, velocityY);
 		}
 
 		@Override
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
-                                float distanceX, float distanceY) {
+								float distanceX, float distanceY) {
 			synchronized (HorizontalListView.this) {
 				mNextX += (int) distanceX;
 			}
 			requestLayout();
+
 			return true;
 		}
+
+
 
 		@Override
 		public boolean onSingleTapConfirmed(MotionEvent e) {
@@ -511,10 +581,18 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 			androidGlow.clearColorFilter();
 			androidEdge.clearColorFilter();
 		} else {
-			int brandColor = getResources().getColor(android.R.color.transparent);
+			int brandColor = getResources().getColor(R.color.transparent);
 			androidGlow.setColorFilter(brandColor, PorterDuff.Mode.SRC_IN);
 			androidEdge.setColorFilter(brandColor, PorterDuff.Mode.SRC_IN);
 		}
+	}
+
+	public void setScrollMode(int mode){
+		mScrollMode = mode;
+	}
+
+	public void setMaxScrollX(int maxScrollX){
+        mMaxScrollX = maxScrollX;
 	}
 
 	@Override
@@ -530,3 +608,4 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 
 }
+

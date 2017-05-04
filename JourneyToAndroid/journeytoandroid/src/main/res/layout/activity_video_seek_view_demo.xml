@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         >
 
-        <com.meetme.android.horizontallistview.HorizontalListView
+        <com.taoism.journeytoandroid.customview.list.HorizontalListView
             android:id="@+id/hlv"
             android:layout_width="match_parent"
             android:layout_height="100dp"

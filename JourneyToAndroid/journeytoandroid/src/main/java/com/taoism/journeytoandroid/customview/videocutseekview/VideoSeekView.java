@@ -103,6 +103,9 @@ public class VideoSeekView extends ViewGroup {
     private float mCurrentTimeAxisWidth;
     private float mMinTimeAxisWidth;
     private float mDurationTimeAxisWidth;
+    private float mActualTimeAxisWidth;
+
+    private float mInitialTimeAxisWidth = 0;
 
 
     private SeekListener mInnerSeekListener;
@@ -534,8 +537,11 @@ public class VideoSeekView extends ViewGroup {
             mTotalTimeAxisWidth = mFrameRangeView.getMeasuredWidth() - mRightThumbDrawable.getIntrinsicWidth() - mBorderWidth;
             mMinTimeAxisWidth = ((float) mMinTime / mTotalTime) * mTotalTimeAxisWidth;
 
+            mActualTimeAxisWidth = (float) mDuration / mTotalTime * mTotalTimeAxisWidth;
+
             if (mDuration > 0 && mDuration < mTotalTime) {
-                mDurationTimeAxisWidth = (int) ((float) mDuration / mTotalTime * mTotalTimeAxisWidth);
+
+                mDurationTimeAxisWidth = (int) (mActualTimeAxisWidth);
             } else {
                 mDurationTimeAxisWidth = mTotalTimeAxisWidth;
             }
@@ -546,6 +552,10 @@ public class VideoSeekView extends ViewGroup {
                     ((float) mCurrentTime /
                             mTotalTime)
                             * mTotalTimeAxisWidth);
+
+            if(mInitialTimeAxisWidth == 0){
+                mInitialTimeAxisWidth = mCurrentTimeAxisWidth;
+            }
 
             Log.i(TAG, "mMinTimeAxisWidth:" + mMinTimeAxisWidth);
 
@@ -654,6 +664,12 @@ public class VideoSeekView extends ViewGroup {
         }
         return mCurrentTime;
     }
+
+
+    public float getActualTimeWidth(){
+        return mActualTimeAxisWidth;
+    }
+
 
 
     public float dp2px(float dp) {

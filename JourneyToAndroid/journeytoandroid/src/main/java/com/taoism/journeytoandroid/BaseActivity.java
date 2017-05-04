@@ -16,6 +16,8 @@ public class BaseActivity extends Activity {
     private ProgressDialog mProgressDialog;
     public Toast mToast;
 
+    public static String TAG = BaseActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,4 +69,5 @@ public class BaseActivity extends Activity {
         }
         return 0;
     }
+
 }
