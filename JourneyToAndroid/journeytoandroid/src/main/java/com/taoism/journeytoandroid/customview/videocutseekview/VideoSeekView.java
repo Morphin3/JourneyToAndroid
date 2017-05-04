@@ -115,6 +115,8 @@ public class VideoSeekView extends ViewGroup {
     private int mFrameRangeViewOldWidth = 0;
     private int mFrameRangeViewOldHeight = 0;
 
+    private float mAdjustedDurationTimeAxisWidth = -1;
+
     public VideoSeekView(Context context) {
         this(context, null);
     }
@@ -398,9 +400,17 @@ public class VideoSeekView extends ViewGroup {
         mCurrentTimeAxisWidth += dx;
 //        View parent = (View) getParent();
         int parentWidth = getWidth();
-        if (mCurrentTimeAxisWidth > mDurationTimeAxisWidth + offset) {
-            mCurrentTimeAxisWidth = mDurationTimeAxisWidth + offset;
+
+        if(mAdjustedDurationTimeAxisWidth < 0){
+            if (mCurrentTimeAxisWidth > mDurationTimeAxisWidth + offset) {
+                mCurrentTimeAxisWidth = mDurationTimeAxisWidth + offset;
+            }
+        }else{
+            if (mCurrentTimeAxisWidth > mAdjustedDurationTimeAxisWidth + offset) {
+                mCurrentTimeAxisWidth = mAdjustedDurationTimeAxisWidth + offset;
+            }
         }
+
 
 
         if (mCurrentTimeAxisWidth - 2 * offset < mMinTimeAxisWidth) {
@@ -668,6 +678,14 @@ public class VideoSeekView extends ViewGroup {
 
     public float getActualTimeWidth(){
         return mActualTimeAxisWidth;
+    }
+
+    public void adjustDurationTimeAxisWidth(float adjustWidth){
+        if(adjustWidth == 0){
+            mAdjustedDurationTimeAxisWidth = -1;
+        }else{
+            mAdjustedDurationTimeAxisWidth = mDurationTimeAxisWidth - adjustWidth;
+        }
     }
 
 

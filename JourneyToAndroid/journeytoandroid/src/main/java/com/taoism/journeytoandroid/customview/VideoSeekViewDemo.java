@@ -10,12 +10,14 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taoism.journeytoandroid.BaseActivity;
 import com.taoism.journeytoandroid.R;
 import com.taoism.journeytoandroid.customview.list.HorizontalListView;
 import com.taoism.journeytoandroid.customview.videocutseekview.VideoSeekView;
+import com.taoism.journeytoandroid.utils.screenutil.ScreenUtil;
 
 import static com.taoism.journeytoandroid.R.id.vsv;
 
@@ -67,12 +69,10 @@ public class VideoSeekViewDemo extends BaseActivity {
             }
         });
 
-        mVSV.setActualDuration(800000);
+        mVSV.setActualDuration(90000);
 
         hlv = (HorizontalListView) findViewById(R.id.hlv);
-
-        hlv.setAdapter(new HorizontalAdapter(this));
-
+        hlv.setAdapter(new HorizontalAdapter(this, 90000));
         hlv.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -93,7 +93,8 @@ public class VideoSeekViewDemo extends BaseActivity {
             @Override
             public void onContainerScroll() {
 
-                refreshScrollMode(false);
+                mVSV.adjustDurationTimeAxisWidth(hlv.getScrollX());
+
             }
 
             @Override
@@ -132,7 +133,7 @@ public class VideoSeekViewDemo extends BaseActivity {
     }
 
     private void refreshScrollMode(boolean setMax) {
-        if (mReachListEdge && hlv.getCurrentX() + hlv.getScrollX() + mVSV.getCurrentTimeAxisWidth() < mVSV.getActualTimeWidth()){
+        if (mReachListEdge && hlv.getCurrentX() + mVSV.getCurrentTimeAxisWidth() < (int)mVSV.getActualTimeWidth()){
             hlv.setScrollMode(HorizontalListView.MODE_SCROLL_CONTAINER);
             if(setMax){
                 hlv.setMaxScrollX((int) (mVSV.getActualTimeWidth() - hlv.getCurrentX() - mVSV.getCurrentTimeAxisWidth()));
@@ -147,13 +148,26 @@ public class VideoSeekViewDemo extends BaseActivity {
 
         private LayoutInflater mInflater;
 
-        public HorizontalAdapter(Context context) {
+        private long mDuration;
+
+        private int mCount;// 数量
+
+
+        private int mItemWidth;
+
+        public HorizontalAdapter(Context context,long duration) {
             mInflater = LayoutInflater.from(context);
+            mDuration = duration;
+
+            this.mCount = mDuration % (5000) > 0 ? 1 : 0;
+            this.mCount += mDuration / (5000) ;
+
+            mItemWidth = (int) (ScreenUtil.getDisplayWidth() / 12F);
         }
 
         @Override
         public int getCount() {
-            return 10;
+            return mCount;
         }
 
         @Override
@@ -170,7 +184,7 @@ public class VideoSeekViewDemo extends BaseActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder viewHolder = null;
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.item_photo_gallery, null);
+                convertView = mInflater.inflate(R.layout.item_video_frame, null);
 
                 viewHolder = new ViewHolder();
                 viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_picture);
@@ -180,6 +194,11 @@ public class VideoSeekViewDemo extends BaseActivity {
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
+
+            LinearLayout.LayoutParams lp =  new LinearLayout.LayoutParams(mItemWidth, ViewGroup.LayoutParams.WRAP_CONTENT);
+            viewHolder.imageView.setLayoutParams(lp);
+            viewHolder.imageView.setBackgroundResource(R.color.blue_light);
+            viewHolder.textView.setText(position + 1 + "");
             return convertView;
         }
 
