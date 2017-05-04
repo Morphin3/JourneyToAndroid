@@ -53,7 +53,7 @@ def gitSha() {
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.2'
 
     compileOptions {
         sourceCompatibility javaVersion
@@ -63,6 +63,8 @@ android {
     //recommend
     dexOptions {
         jumboMode = true
+
+        javaMaxHeapSize "3g"
     }
 
     signingConfigs {
