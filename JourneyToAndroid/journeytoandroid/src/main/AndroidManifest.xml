@@ -541,6 +541,18 @@
             </intent-filter>
         </activity>
 
+        <!--***************************************   Video   ******************************************************************************************-->
+
+        <activity
+            android:name="com.taoism.journeytoandroid.video.videoframe.VideoFrameDemo"
+            android:label="Video/VideoFrameDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
 
     </application>
 
