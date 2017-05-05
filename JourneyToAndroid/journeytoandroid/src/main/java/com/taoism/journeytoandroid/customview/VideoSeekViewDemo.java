@@ -92,21 +92,39 @@ public class VideoSeekViewDemo extends BaseActivity {
         hlv.setOnContainerScrollListener(new HorizontalListView.OnContainerScrollListener() {
             @Override
             public void onContainerScroll() {
+                Log.i("VideoEditActivity", "onContainerScroll()");
 
-                mVSV.adjustDurationTimeAxisWidth(hlv.getScrollX());
+                if (mVSV.getActualTimeWidth() - hlv.getScrollX() - hlv.getCurrentX() < mVSV.getDurationTimeAxisWidth()) {
+                    mVSV.adjustDurationTimeAxisWidth(mVSV.getActualTimeWidth() - hlv.getScrollX() - hlv.getCurrentX());
+                }
+
+//                mVSV.adjustDurationTimeAxisWidth(hlv.getScrollX() - ScreenUtil.dip2px(14));
+//                mVSV.adjustDurationTimeAxisWidth(hlv.getScrollX() < ScreenUtil.dip2px(14) ? ()  : hlv.getScrollX() - ScreenUtil.dip2px(14));
+
+//                if(mVSV.getActualTimeWidth() - mVSV.getCurrentTimeAxisWidth() < ScreenUtil.dip2px(14)){
+//                   0
+//                }else{
+//                    hlv.getScrollX()
+//                }
 
             }
 
             @Override
             public void onReachContainerEdge() {
+                Log.i("VideoEditActivity", "onReachContainerEdge()");
+
+//                mVSV.adjustDurationTimeAxisWidth(hlv.getScrollX());
 
                 mReachListEdge = true;
-                refreshScrollMode(false);
+                refreshScrollMode(true);
 
             }
 
             @Override
             public void onLeaveContainerEdge() {
+                Log.i("VideoEditActivity", "onLeaveContainerEdge()");
+
+                mVSV.adjustDurationTimeAxisWidth(0);
 
                 mReachListEdge = false;
                 refreshScrollMode(false);
@@ -133,15 +151,30 @@ public class VideoSeekViewDemo extends BaseActivity {
     }
 
     private void refreshScrollMode(boolean setMax) {
-        if (mReachListEdge && hlv.getCurrentX() + mVSV.getCurrentTimeAxisWidth() < (int)mVSV.getActualTimeWidth()){
-            hlv.setScrollMode(HorizontalListView.MODE_SCROLL_CONTAINER);
-            if(setMax){
-                hlv.setMaxScrollX((int) (mVSV.getActualTimeWidth() - hlv.getCurrentX() - mVSV.getCurrentTimeAxisWidth()));
-                Log.i(TAG,"max scrollX:" + (int) (mVSV.getActualTimeWidth() - hlv.getCurrentX() - mVSV.getCurrentTimeAxisWidth()));
-            }
-        } else{
-            hlv.setScrollMode(HorizontalListView.MODE_SCROLL_CONTENT);
+
+        if (mReachListEdge && setMax) {
+            hlv.setMaxScrollX(mVSV.getActualTimeWidth() - hlv.getCurrentX() - mVSV.getCurrentTimeAxisWidth());
+            Log.i("VideoEditActivity", "max scrollX:" + (mVSV.getActualTimeWidth() - hlv.getCurrentX() - mVSV.getCurrentTimeAxisWidth()));
         }
+
+        Log.i("VideoEditActivity", "mReachListEdge = " + mReachListEdge);
+
+        if (mReachListEdge && hlv.getCurrentX() + mVSV.getCurrentTimeAxisWidth() < mVSV.getActualTimeWidth()) {
+
+            hlv.setScrollMode(HorizontalListView.MODE_SCROLL_CONTAINER);
+            Log.i("VideoEditActivity", (hlv.getCurrentX() + mVSV.getCurrentTimeAxisWidth()) + "<" + mVSV.getActualTimeWidth());
+            Log.i("VideoEditActivity", "refreshScrollMode:HorizontalListView.MODE_SCROLL_CONTAINER");
+
+        } else {
+
+            if (mReachListEdge) {
+                Log.i("VideoEditActivity", (hlv.getCurrentX() + mVSV.getCurrentTimeAxisWidth()) + ">=" + mVSV.getActualTimeWidth());
+            }
+
+            hlv.setScrollMode(HorizontalListView.MODE_SCROLL_CONTENT);
+            Log.i("VideoEditActivity", "refreshScrollMode:HorizontalListView.MODE_SCROLL_CONTENT");
+        }
+
     }
 
     class HorizontalAdapter extends BaseAdapter {
@@ -155,14 +188,14 @@ public class VideoSeekViewDemo extends BaseActivity {
 
         private int mItemWidth;
 
-        public HorizontalAdapter(Context context,long duration) {
+        public HorizontalAdapter(Context context, long duration) {
             mInflater = LayoutInflater.from(context);
             mDuration = duration;
 
             this.mCount = mDuration % (5000) > 0 ? 1 : 0;
-            this.mCount += mDuration / (5000) ;
+            this.mCount += mDuration / (5000);
 
-            mItemWidth = (int) (ScreenUtil.getDisplayWidth() / 12F);
+            mItemWidth = (int) Math.ceil(((ScreenUtil.getDisplayWidth() - ScreenUtil.dip2px(15 + 2 + 14 * 2)) / 12F));
         }
 
         @Override
@@ -195,7 +228,7 @@ public class VideoSeekViewDemo extends BaseActivity {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            LinearLayout.LayoutParams lp =  new LinearLayout.LayoutParams(mItemWidth, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(mItemWidth, ViewGroup.LayoutParams.MATCH_PARENT);
             viewHolder.imageView.setLayoutParams(lp);
             viewHolder.imageView.setBackgroundResource(R.color.blue_light);
             viewHolder.textView.setText(position + 1 + "");

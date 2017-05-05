@@ -85,7 +85,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	public  static final int MODE_SCROLL_CONTAINER = 1;
 	private int mScrollMode =  MODE_SCROLL_CONTENT;
 
-	private int mMaxScrollX = Integer.MAX_VALUE;
+	private float mMaxScrollX = 0;
 
 	private boolean mIsListViewReachRightEdge = false;
 
@@ -230,14 +230,18 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 			mNextX = 0;
 			mScroller.forceFinished(true);
 		}
+
+		boolean checkEdgeFlag = false;
+
 		if (mNextX >= mMaxX) {
 			mNextX = mMaxX;
 			mScroller.forceFinished(true);
 
-			mContainerScrollListener.onReachContainerEdge();
-		}else{
-			mContainerScrollListener.onLeaveContainerEdge();
+			checkEdgeFlag = true;
 		}
+//		else{
+//			mContainerScrollListener.onLeaveContainerEdge();
+//		}
 
 		int dx = mCurrentX - mNextX;
 
@@ -256,6 +260,10 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 				mScrollListener.onScroll(null, mLeftViewIndex, mRightViewIndex
 						- mLeftViewIndex, mAdapter.getCount());
 			}
+		}
+
+		if(checkEdgeFlag){
+			mContainerScrollListener.onReachContainerEdge();
 		}
 	}
 
@@ -367,6 +375,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		} else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
 			if (Math.abs(ev.getX() - mLastMotionX) > ScreenUtil.dip2px(10))
 				isIntercept = true;
+
 //			mLastMotionX = ev.getX();
 //			mLastMotionY = ev.getY();
 		} else if (ev.getAction() == MotionEvent.ACTION_UP) {
@@ -384,6 +393,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 //		return mGesture.onTouchEvent(ev);
 
 		if (mScrollMode == MODE_SCROLL_CONTENT) {
+			mLastMotionX = ev.getX();
 			return mGesture.onTouchEvent(ev);
 		} else {
 			if(ev.getAction() == MotionEvent.ACTION_MOVE){
@@ -391,8 +401,9 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 				mLastMotionX = ev.getX();
 
 				if (getScrollX() + distanceX > mMaxScrollX) {
+					Log.i("HorizontalListView","getScrollX() = " +getScrollX() + "getScrollX() = " + distanceX + "---" + (getScrollX() + distanceX) + ">" + mMaxScrollX);
 					Log.i("HorizontalListView", "scrollTo(mMaxScrollX, 0);");
-					scrollTo(mMaxScrollX, 0);
+					scrollTo((int) mMaxScrollX, 0);
 				} else if (getScrollX() + distanceX < 0) {
 					Log.i("HorizontalListView", "scrollTo(0, 0);");
 					scrollTo(0, 0);
@@ -402,7 +413,6 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 				} else {
 					Log.i("HorizontalListView", "scrollBy((int) distanceX, 0);");
 					scrollBy((int) distanceX, 0);
-
 					if(mContainerScrollListener != null){
 						mContainerScrollListener.onContainerScroll();
 					}
@@ -591,8 +601,11 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		mScrollMode = mode;
 	}
 
-	public void setMaxScrollX(int maxScrollX){
+	public void setMaxScrollX(float maxScrollX){
         mMaxScrollX = maxScrollX;
+		if(mMaxScrollX < 0 ){
+			mMaxScrollX = 0;
+		}
 	}
 
 	@Override

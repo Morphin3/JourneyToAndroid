@@ -551,14 +551,14 @@ public class VideoSeekView extends ViewGroup {
 
             if (mDuration > 0 && mDuration < mTotalTime) {
 
-                mDurationTimeAxisWidth = (int) (mActualTimeAxisWidth);
+                mDurationTimeAxisWidth = mActualTimeAxisWidth;
             } else {
                 mDurationTimeAxisWidth = mTotalTimeAxisWidth;
             }
 
             mCurrentTime = getCorrectCurrentTime();
 
-            mCurrentTimeAxisWidth = (int) (
+            mCurrentTimeAxisWidth = (
                     ((float) mCurrentTime /
                             mTotalTime)
                             * mTotalTimeAxisWidth);
@@ -581,10 +581,10 @@ public class VideoSeekView extends ViewGroup {
             mBorderPath.reset();
 
             mBorderPath.moveTo(0, 0);
-            mBorderPath.lineTo(mCurrentTimeAxisWidth, 0);
+            mBorderPath.lineTo(mCurrentTimeAxisWidth + mBorderWidth, 0);
             mBorderPath.moveTo(0, 0);
             mBorderPath.lineTo(0, getHeight());
-            mBorderPath.lineTo(mCurrentTimeAxisWidth, getHeight());
+            mBorderPath.lineTo(mCurrentTimeAxisWidth + mBorderWidth, getHeight());
 
             canvas.drawPath(mBorderPath, mBorderPaint);
 
@@ -594,7 +594,7 @@ public class VideoSeekView extends ViewGroup {
 
             if (mRightThumbDrawable != null) {
                 canvas.save();
-                canvas.translate(mCurrentTimeAxisWidth, 0);
+                canvas.translate(mCurrentTimeAxisWidth + mBorderWidth, 0);
                 mRightThumbDrawable.setBounds(0, 0, mRightThumbDrawable.getIntrinsicWidth(), getHeight());
                 mRightThumbDrawable.draw(canvas);
                 canvas.restore();
@@ -684,7 +684,7 @@ public class VideoSeekView extends ViewGroup {
         if(adjustWidth == 0){
             mAdjustedDurationTimeAxisWidth = -1;
         }else{
-            mAdjustedDurationTimeAxisWidth = mDurationTimeAxisWidth - adjustWidth;
+            mAdjustedDurationTimeAxisWidth = adjustWidth;
         }
     }
 

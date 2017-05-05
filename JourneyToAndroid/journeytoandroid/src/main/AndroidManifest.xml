@@ -154,6 +154,7 @@
         <activity
             android:name="com.taoism.journeytoandroid.customview.VideoSeekViewDemo"
             android:label="CustomView(自定义控件)/VideoSeekView"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
