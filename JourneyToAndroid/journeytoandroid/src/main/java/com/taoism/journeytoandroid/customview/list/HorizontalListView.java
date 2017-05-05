@@ -255,8 +255,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		if (!mScroller.isFinished()) {
 			post(requestLayout);
 		} else {
-			if (mScrollListener != null) {
-//			if (dx != 0 && mScrollListener != null) {
+			if (dx != 0 && mScrollListener != null) {
 				mScrollListener.onScroll(null, mLeftViewIndex, mRightViewIndex
 						- mLeftViewIndex, mAdapter.getCount());
 			}

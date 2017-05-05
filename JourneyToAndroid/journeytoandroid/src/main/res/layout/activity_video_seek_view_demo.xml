@@ -32,15 +32,18 @@
             android:id="@+id/hlv"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_marginLeft="14dp"
             />
 
         <com.taoism.journeytoandroid.customview.videocutseekview.VideoSeekView
             android:id="@+id/vsv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             app:borderWidth="2dp"
             app:rightThumbDrawable="@drawable/ic_right_thumb"
             app:totalTime="60000"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
             />
 
 
