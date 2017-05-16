@@ -57,9 +57,9 @@ public class FaceDetectorDemo extends BaseActivity implements View.OnClickListen
 //                InputStream stream = getResources().openRawResource(R.raw.face_animal);
 //                InputStream stream = getResources().openRawResource(R.raw.face_animal);
 //                InputStream stream = getResources().openRawResource(R.raw.face_side2);
-//                InputStream stream = getResources().openRawResource(R.raw.face_with_closed_eyes);
+                InputStream stream = getResources().openRawResource(R.raw.face_with_closed_eyes);
 //                InputStream stream = getResources().openRawResource(R.raw.face_with_sunglasses);
-                InputStream stream = getResources().openRawResource(R.raw.face);
+//                InputStream stream = getResources().openRawResource(R.raw.face);
                 Bitmap bitmap = BitmapFactory.decodeStream(stream);
 
 
@@ -80,31 +80,28 @@ public class FaceDetectorDemo extends BaseActivity implements View.OnClickListen
         }
     }
 
+
     private static final int MAX_FACES = 10;
 
+    public static FaceInfoModel dectWithOrigin(Bitmap origin) {
+        return dectWithOrigin(origin, MAX_FACES);
+    }
 
-    private void dectWithOrigin(Bitmap origin) {
+    public static FaceInfoModel dectWithOrigin(Bitmap origin, int maxFaceCount) {
 
-
-        final FaceDetector.Face[] faces = new FaceDetector.Face[MAX_FACES];
+        final FaceDetector.Face[] faces = new FaceDetector.Face[maxFaceCount];
 
         final Bitmap bitmap565 = convertTo565(origin);
 
         if (bitmap565 != null) {
 
             final FaceDetector faceDetector =
-                    new FaceDetector(bitmap565.getWidth(), bitmap565.getHeight(), MAX_FACES);
+                    new FaceDetector(bitmap565.getWidth(), bitmap565.getHeight(), maxFaceCount);
 
             final int faceCount = faceDetector.findFaces(bitmap565, faces);
 
-
-            float left = 0;
-            float top = 0;
-            float right = 0;
-            float bottom = 0;
-
+            PointF midPointF = new PointF();
             float maxEyeDistance = 0;
-
             int maxFaceIndex = -1;
 
             if (faceCount > 0) {
@@ -112,64 +109,104 @@ public class FaceDetectorDemo extends BaseActivity implements View.OnClickListen
 
                     FaceDetector.Face face = faces[i];
 
-                    final PointF midPoint = new PointF();
-
-                    face.getMidPoint(midPoint);
-
                     float eyeDistance = face.eyesDistance();
+
                     if (eyeDistance > maxEyeDistance) {
+                        face.getMidPoint(midPointF);
                         maxEyeDistance = eyeDistance;
                         maxFaceIndex = i;
                     }
 
-                    Log.i(TAG, String.format("第%d张脸, 眼睛间距%f,坐标x:%f,y:%f", i, eyeDistance, midPoint.x, midPoint.y));
-
-//                    left = (float) (face.getPosition().x * scale);
-//                    top = (float) (face.getPosition().y * scale);
-//                    right = (float) scale * (face.getPosition().x + face.getWidth());
-//                    bottom = (float) scale * (face.getPosition().y + face.getHeight());
-//
-//                    Log.i(TAG, String.format("第%d张脸,left:%f,top:%f,right:%f,bottom:%f", i, left, top, right, bottom));
-
-//                    float area = (right - left) * (bottom - top);
-//                    if (area > maxArea) {
-//                        maxArea = area;
-//                        maxFaceIndex = i;
-//                    }
+                    Log.i(TAG, String.format("第%d张脸, 眼睛间距%f,坐标x:%f,y:%f", i, eyeDistance, midPointF.x, midPointF.y));
                 }
-
                 Log.i(TAG, String.format("最大眼睛间距:%f,最大脸序号:%d", maxEyeDistance, maxFaceIndex));
-
-            } else {
+//
+                return new FaceInfoModel(midPointF,
+                        maxEyeDistance,
+                        maxFaceIndex);
 
             }
         }
-
-
+        return null;
     }
 
+    public static class FaceInfoModel {
 
-    private Bitmap convertTo565(final Bitmap origin) {
+        private PointF pointF;
+        private float  eyeDistance;
+        private int  eyeIndex;
+
+        public FaceInfoModel(PointF pointF, float eyeDistance, int eyeIndex) {
+            this.pointF = pointF;
+            this.eyeDistance = eyeDistance;
+            this.eyeIndex = eyeIndex;
+        }
+
+        public float getCenterX(){
+            return this.getPointF().x;
+        }
+
+        public float getCenterY(){
+            return this.getPointF().y;
+        }
+
+        public PointF getPointF() {
+            return pointF;
+        }
+
+        public void setPointF(PointF pointF) {
+            this.pointF = pointF;
+        }
+
+        public float getEyeDistance() {
+            return eyeDistance;
+        }
+
+        public void setEyeDistance(float eyeDistance) {
+            this.eyeDistance = eyeDistance;
+        }
+
+        public int getEyeIndex() {
+            return eyeIndex;
+        }
+
+        public void setEyeIndex(int eyeIndex) {
+            this.eyeIndex = eyeIndex;
+        }
+    }
+
+    public static Bitmap convertTo565(Bitmap origin) {
 
         if (origin == null) {
 
             return null;
         }
 
-        Bitmap bitmap = origin;
+        Bitmap result = origin;
 
-        if (bitmap.getConfig() != Bitmap.Config.RGB_565) {
+        boolean isCopy = false;
 
-            bitmap = bitmap.copy(Bitmap.Config.RGB_565, true);
+        if (origin.getConfig() != Bitmap.Config.RGB_565) {
+            isCopy = true;
+            result = origin.copy(Bitmap.Config.RGB_565, true);
+        } else {
+            isCopy = false;
         }
 
-        if ((bitmap.getWidth() & 0x1) != 0) {
+        if ((result.getWidth() & 0x1) != 0) {
 
-            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth() & ~0x1,
-                    bitmap.getHeight());
+            result = Bitmap.createBitmap(result, 0, 0, result.getWidth() & ~0x1,
+                    result.getHeight());
         }
 
-        return bitmap;
+        if(isCopy){
+            if(origin != null){
+                origin.recycle();
+                origin = null;
+            }
+        }
+
+        return result;
     }
 
 
