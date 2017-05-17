@@ -2,9 +2,13 @@ package com.taoism.journeytoandroid.performance;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
+
+import com.taoism.journeytoandroid.utils.toastutil.ToastUtil;
 
 /**
  * Date: 2017-03-20
@@ -14,6 +18,11 @@ import android.widget.ImageView;
  */
 
 public class ClipRectImageView extends ImageView {
+
+//    private RectF mRectF;
+
+    private float mRectLeft;
+    private float mRectRight;
 
     public ClipRectImageView(Context context) {
         super(context);
@@ -30,14 +39,31 @@ public class ClipRectImageView extends ImageView {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        float scale = getResources().getDisplayMetrics().density;
-        int pixel = (int) ((20 * scale) + 0.5);
+//        float scale = getResources().getDisplayMetrics().density;
+//        int pixel = (int) ((20 * scale) + 0.5);
 
-        canvas.clipRect(0,0, pixel, getHeight());
+//        if (mRectF == null) {
+//            mRectF = new RectF(0, 0, getWidth(), getHeight());
+//        }
+
+        canvas.clipRect(mRectLeft == 0 ? 0 : mRectLeft,
+                0,
+                mRectRight == 0 ? getWidth() : mRectRight,
+                getHeight());
+
+        Log.i("performance", "canvas.quickReject(0, 0f, 200f, (float) getHeight(), Canvas.EdgeType.AA):" + canvas.quickReject(0, 0f, 200f, (float) getHeight(), Canvas.EdgeType.AA));
+        Log.i("performance", "canvas.quickReject(200f, 0f, getWidth(), (float) getHeight(), Canvas.EdgeType.AA)" + canvas.quickReject(200f, 0f, getWidth(), (float) getHeight(), Canvas.EdgeType.AA));
 
         super.onDraw(canvas);
 
+    }
 
+    public void setClipRectLeft(float rectLeft) {
+        mRectLeft = rectLeft;
+    }
+
+    public void setClipRectRight(float rectRight) {
+        mRectRight = rectRight;
     }
 
     @Override

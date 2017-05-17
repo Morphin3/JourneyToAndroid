@@ -540,8 +540,9 @@
         <!--***************************************   Performance   ******************************************************************************************-->
 
         <activity
-            android:name="com.taoism.journeytoandroid.performance.PerformanceDemo"
-            android:label="Performane/PerformanceDemo">
+            android:name="com.taoism.journeytoandroid.performance.ClipRectDemo"
+            android:label="Performane/PerformanceDemo"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>

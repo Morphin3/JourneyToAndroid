@@ -109,7 +109,7 @@ android {
             debuggable true
             minifyEnabled false
 //            signingConfig signingConfigs.debug
-            shrinkResources true
+            shrinkResources false
         }
 
     }
