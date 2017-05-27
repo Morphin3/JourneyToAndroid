@@ -1,4 +1,4 @@
-package com.taoism.journeytoandroid.thread;
+package com.taoism.journeytoandroid.async;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

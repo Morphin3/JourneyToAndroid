@@ -572,6 +572,30 @@
         </activity>
 
 
+        <!--***************************************   Async   ******************************************************************************************-->
+
+        <activity
+            android:name="com.taoism.journeytoandroid.async.HandlerDemoActivity"
+            android:label="Async/HandlerDemo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.taoism.journeytoandroid.async.HandlerAnotherPageActivity"
+            android:label="Async/HandlerAnotherPageActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.taoism.journeytoandroid.BaseActivity;
 import com.taoism.journeytoandroid.R;
-import com.taoism.journeytoandroid.thread.ThreadPoolUtil;
+import com.taoism.journeytoandroid.async.ThreadPoolUtil;
 
 import java.io.File;
 
