@@ -1,17 +1,23 @@
 buildscript {
     repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter { url "http://jcenter.bintray.com/"}
+
         mavenCentral()
-//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        jcenter()
+//        jcenter()
     }
 }
 apply plugin: 'android'
 
 repositories {
-    mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    jcenter { url "http://jcenter.bintray.com/"}
+
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-//    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    jcenter()
+
+    mavenCentral()
+
+//    jcenter()
 }
 
 
@@ -94,7 +100,7 @@ android {
          * so we can get the newly git version easily!
          */
         buildConfigField "String", "TINKER_ID", "\"${getTinkerIdValue()}\""
-        buildConfigField "String", "PLATFORM",  "\"all\""
+        buildConfigField "String", "PLATFORM", "\"all\""
     }
     buildTypes {
         release {
@@ -363,7 +369,7 @@ if (buildWithTinker()) {
     }
 
     List<String> flavors = new ArrayList<>();
-    project.android.productFlavors.each {flavor ->
+    project.android.productFlavors.each { flavor ->
         flavors.add(flavor.name)
     }
     boolean hasFlavors = flavors.size() > 0
@@ -450,10 +456,18 @@ if (buildWithTinker()) {
     }
 }
 
+configurations {
+//    compile.exclude module: 'commons'
+//    all*.exclude group: 'org.gradle.test.excludes', module: 'reports'
+//    all*.exclude group: 'com.android.support', module: 'support-v4'
+
+}
+
 
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+//    compile 'com.android.support:support-v4:23.0.0'
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.android.support:recyclerview-v7:23.0.0'
     compile 'com.romainpiel.shimmer:library:1.2.0@aar'
@@ -477,7 +491,6 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 
 //    compile 'org.greenrobot:eventbus:2.4.0'
-
 
 //    compile 'com.google.android.gms:play-services:10.2.4'
     compile 'com.google.android.gms:play-services-vision:9.4.0'
