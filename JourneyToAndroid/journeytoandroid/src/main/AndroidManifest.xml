@@ -180,6 +180,18 @@
         </activity>
 
 
+        <activity
+            android:name="com.taoism.journeytoandroid.customview.lyricview.LrcViewDemoAcitivty"
+            android:label="CustomView(自定义控件)/LyricView"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
+
         <!--***************************************   Intent   ******************************************************************************************-->
 
         <activity
