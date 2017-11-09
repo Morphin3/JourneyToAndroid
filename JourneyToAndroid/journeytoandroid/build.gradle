@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        jcenter { url "http://jcenter.bintray.com/"}
+        jcenter { url "http://jcenter.bintray.com/" }
 
         mavenCentral()
 //        jcenter()
@@ -11,7 +11,7 @@ apply plugin: 'android'
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    jcenter { url "http://jcenter.bintray.com/"}
+    jcenter { url "http://jcenter.bintray.com/" }
 
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 
@@ -456,18 +456,30 @@ if (buildWithTinker()) {
     }
 }
 
-configurations {
-//    compile.exclude module: 'commons'
-//    all*.exclude group: 'org.gradle.test.excludes', module: 'reports'
+//configurations {
+////    compile.exclude module: 'support-v4'
+////    all*.exclude group: 'org.gradle.test.excludes', module: 'reports'
 //    all*.exclude group: 'com.android.support', module: 'support-v4'
+//
+//}
 
-}
+//configurations.all {
+//    transitive = false
+//}
 
+
+//android{
+//    configurations.all{
+//        resolutionStrategy.force 'org.hamcrest:hamcrest-core:1.1'
+//    }
+//}
 
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-//    compile 'com.android.support:support-v4:23.0.0'
+    compile('com.android.support:support-v4:23.0.0') {
+        force = true;
+    }
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.android.support:recyclerview-v7:23.0.0'
     compile 'com.romainpiel.shimmer:library:1.2.0@aar'
@@ -485,7 +497,9 @@ dependencies {
     //tinker的核心库
     compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
 
-    compile project(':AndroidHorizontalListView')
+    compile (project(':AndroidHorizontalListView')){
+//        exclude module: 'support-v4'
+    }
 
 
     compile 'com.android.support:multidex:1.0.1'

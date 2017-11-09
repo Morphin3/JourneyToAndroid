@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--<LinearLayout-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:background="@color/red1"-->
+<!--&gt;-->
+
+<!--<TextView-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:background="@color/blue_light"-->
+<!--android:text="父 match_parent，子 wrap_content"-->
+<!--/>-->
+<!--</LinearLayout>-->
+
+<!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/blue_light"-->
+        <!--android:text="父 wrap_content，子 match_parent"-->
+        <!--/>-->
+<!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父 wrap_content，子 wrap_content"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父固定尺寸，子 match_parent"-->
+    <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父固定尺寸，子 wrap_content"-->
+    <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="100dp"
+android:layout_height="100dp"
+android:layout_marginTop="20dp"
+android:background="@color/red1"
+>
+
+<TextView
+android:layout_width="200dp"
+android:layout_height="200dp"
+android:background="@color/blue_light"
+android:text="父固定尺寸，子固定尺寸大于父"
+/>
+
+</LinearLayout>
+
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--&gt;-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父 match_parent，子 wrap_content"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/red1"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父 wrap_content，子 match_parent"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父 wrap_content，子 wrap_content"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父固定尺寸，子 match_parent"-->
+    <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@color/red1"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/blue_light"-->
+    <!--android:text="父固定尺寸，子 wrap_content"-->
+    <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--</LinearLayout>-->

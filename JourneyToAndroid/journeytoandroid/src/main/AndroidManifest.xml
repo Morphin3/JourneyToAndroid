@@ -70,6 +70,17 @@
 
         </activity>
 
+        <!--***************************************   Overall   ******************************************************************************************-->
+
+        <activity
+            android:name="com.taoism.journeytoandroid.OverallTestActivity"
+            android:label="Overall">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
 
         <!--***************************************   CustomView   ******************************************************************************************-->
         <!--各种自定义的控件，包括第三方-->
