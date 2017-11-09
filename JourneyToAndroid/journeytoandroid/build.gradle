@@ -509,8 +509,10 @@ dependencies {
 //    compile 'com.google.android.gms:play-services:10.2.4'
     compile 'com.google.android.gms:play-services-vision:9.4.0'
 
+    compile project (':LrcView')
 
-}
+
+    }
 
 
 

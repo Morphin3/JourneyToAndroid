@@ -1,3 +1,4 @@
-include ':journeytoandroid', ':AndroidHorizontalListView'
+include ':journeytoandroid', ':AndroidHorizontalListView', ':LrcView'
 
 project(':AndroidHorizontalListView').projectDir = new File('journeytoandroid/libs/AndroidHorizontalListView')
+project(':LrcView').projectDir = new File('journeytoandroid/libs/LrcView')
