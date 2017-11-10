@@ -8,17 +8,25 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
 public class SongTextView extends View {
-    private int   postIndex;
-    private Paint mPaint;
+    private int       postIndex;
+    private TextPaint mSrcPaint;
+    private TextPaint mCoverPaint;
     private int delta = 15;
     private float mTextHeight;
     private float mTextWidth;
     private String mText = "梦 里 面 看 我 七 十 二 变 梦 里 面 看 我 七 十 二 变梦 里 面 看 我 七 十 二 变梦 里 面 看 我 七 十 二 变梦 里 面 看 我 七 十 二 变";
     private PorterDuffXfermode xformode;
+
+
+    private int mWidth;
+    private int mHeight;
 
     public SongTextView(Context ctx) {
         this(ctx, null);
@@ -34,17 +42,26 @@ public class SongTextView extends View {
     }
 
     public void init() {
-        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mSrcPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         xformode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
-        mPaint.setColor(Color.CYAN);
-        mPaint.setTextSize(60.0f);
-        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mPaint.setXfermode(null);
-        mPaint.setTextAlign(Paint.Align.LEFT);
+        mSrcPaint.setColor(Color.CYAN);
+        mSrcPaint.setTextSize(60.0f);
+        mSrcPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mSrcPaint.setXfermode(null);
+        mSrcPaint.setTextAlign(Paint.Align.LEFT);
+
         //文字精确高度
-        Paint.FontMetrics fontMetrics = mPaint.getFontMetrics();
+        Paint.FontMetrics fontMetrics = mSrcPaint.getFontMetrics();
         mTextHeight = fontMetrics.bottom - fontMetrics.descent - fontMetrics.ascent;
-        mTextWidth = mPaint.measureText(mText);
+        mTextWidth = mSrcPaint.measureText(mText);
+
+        mCoverPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        xformode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+        mCoverPaint.setColor(Color.CYAN);
+        mCoverPaint.setTextSize(60.0f);
+        mCoverPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mCoverPaint.setXfermode(null);
+        mCoverPaint.setTextAlign(Paint.Align.LEFT);
     }
 
     /**
@@ -52,8 +69,6 @@ public class SongTextView extends View {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        final int mWidth;
-        final int mHeight;
         /**
          * 设置宽度
          */
@@ -91,21 +106,54 @@ public class SongTextView extends View {
         setMeasuredDimension(mWidth, mHeight);
     }
 
+    private int lineCount = 0;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Bitmap srcBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         Canvas srcCanvas = new Canvas(srcBitmap);
         srcCanvas.drawText(mText, 0, mTextHeight, mPaint);
-        mPaint.setXfermode(xformode);
-        mPaint.setColor(Color.RED);
-        RectF rectF = new RectF(0, 0, postIndex, getMeasuredHeight());
-        srcCanvas.drawRect(rectF, mPaint);
+
+        StaticLayout staticLayout = new StaticLayout(mText,
+                                                     mSrcPaint,
+                                                     srcCanvas.getWidth(),
+                                                     Layout.Alignment.ALIGN_NORMAL,
+                                                     1.0f,
+                                                     0.0f,
+                                                     false);
+        staticLayout.draw(srcCanvas);
+
+
+        staticLayout = new StaticLayout(mText,
+                                        0,
+                                        staticLayout.getLineStart(lineCount),
+                                        mSrcPaint,
+                                        srcCanvas.getWidth(),
+                                        Layout.Alignment.ALIGN_NORMAL,
+                                        1.0f,
+                                        0.0f,
+                                        false);
+
+        mSrcPaint.setColor(Color.YELLOW);
+        staticLayout.draw(srcCanvas);
+
+        int totalLineCount = staticLayout.getLineCount();
+
+        mCoverPaint.setXfermode(xformode);
+        mCoverPaint.setColor(Color.RED);
+        RectF rectF = new RectF(0,
+                                (float) lineCount / totalLineCount * getMeasuredHeight(),
+                                postIndex,
+                                (float) (lineCount + 1) / totalLineCount * getMeasuredHeight());
+        srcCanvas.drawRect(rectF, mCoverPaint);
+
         canvas.drawBitmap(srcBitmap, 0, 0, null);
-        init();
-        if (postIndex < mTextWidth) {
+//        init();
+        if (postIndex < getMeasuredWidth()) {
             postIndex += 10;
         } else {
+            lineCount++;
             postIndex = 0;
         }
         postInvalidateDelayed(30);
