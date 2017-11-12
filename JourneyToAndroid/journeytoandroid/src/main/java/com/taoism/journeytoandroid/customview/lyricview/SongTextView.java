@@ -113,7 +113,7 @@ public class SongTextView extends View {
         super.onDraw(canvas);
         Bitmap srcBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         Canvas srcCanvas = new Canvas(srcBitmap);
-        srcCanvas.drawText(mText, 0, mTextHeight, mPaint);
+//        srcCanvas.drawText(mText, 0, mTextHeight, mSrcPaint);
 
         StaticLayout staticLayout = new StaticLayout(mText,
                                                      mSrcPaint,
@@ -125,18 +125,18 @@ public class SongTextView extends View {
         staticLayout.draw(srcCanvas);
 
 
-        staticLayout = new StaticLayout(mText,
-                                        0,
-                                        staticLayout.getLineStart(lineCount),
-                                        mSrcPaint,
-                                        srcCanvas.getWidth(),
-                                        Layout.Alignment.ALIGN_NORMAL,
-                                        1.0f,
-                                        0.0f,
-                                        false);
-
-        mSrcPaint.setColor(Color.YELLOW);
-        staticLayout.draw(srcCanvas);
+//        staticLayout = new StaticLayout(mText,
+//                                        0,
+//                                        staticLayout.getLineStart(lineCount),
+//                                        mSrcPaint,
+//                                        srcCanvas.getWidth(),
+//                                        Layout.Alignment.ALIGN_NORMAL,
+//                                        1.0f,
+//                                        0.0f,
+//                                        false);
+//
+//        mSrcPaint.setColor(Color.YELLOW);
+//        staticLayout.draw(srcCanvas);
 
         int totalLineCount = staticLayout.getLineCount();
 
