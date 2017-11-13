@@ -10,12 +10,19 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * Date: 2017-11-12
@@ -31,8 +38,10 @@ public class LyricTextView extends TextView {
     private TextPaint          mCoverPaint;
 
 
-    private float lineSpacingMultiplier;
-    private float lineSpacingExtra;
+    private float         lineSpacingMultiplier;
+    private float         lineSpacingExtra;
+    private ValueAnimator valueAnimator;
+    private boolean animating = false;
 
     public LyricTextView(Context context) {
         super(context);
@@ -48,6 +57,9 @@ public class LyricTextView extends TextView {
     }
 
     public void init() {
+
+
+        totalTime = 10 * 1000;
 
         lineSpacingMultiplier = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
                 ? getLineSpacingMultiplier()
@@ -83,13 +95,37 @@ public class LyricTextView extends TextView {
         xformode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
         mCoverPaint.setXfermode(xformode);
 
+        totalWordWidth = mSrcPaint.measureText(getText().toString());
+
+        valueAnimator = ValueAnimator.ofFloat(0f, totalWordWidth);
+        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator.setDuration(totalTime);
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                animating = true;
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                animating = false;
+            }
+        });
+    }
+
+    public void startAnimation() {
+        valueAnimator.start();
+        postInvalidate();
     }
 
     private StaticLayout staticLayout = null;
     private int wantWidth;
-
-    int totalLineCount;
-
+    private int totalLineCount;
+    private int totalTime           = 10 * 1000;
+    private int invalidateFrequency = 30;
+    private float totalWordWidth;
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -111,7 +147,7 @@ public class LyricTextView extends TextView {
 
 
     private int lineIndex = 0;
-    private int postIndex;
+    private float postIndex;
 
 
     @Override
@@ -167,18 +203,18 @@ public class LyricTextView extends TextView {
 
         canvas.drawBitmap(srcBitmap, 0, 0, null);
 
+        float currentValue = ((float) valueAnimator.getAnimatedValue());
+        postIndex = currentValue % getMeasuredWidth();
 
-        if (postIndex < getMeasuredWidth()) {
-            postIndex += 10;
-        } else {
+        if (currentValue - lineIndex * getMeasuredWidth() >= getMeasuredWidth()) {
             if (lineIndex < totalLineCount) {
                 lineIndex++;
-                postIndex = 0;
+                postIndex = currentValue % getMeasuredWidth();
             }
         }
 
-        if (lineIndex < totalLineCount) {
-            postInvalidateDelayed(30);
+        if (animating && (lineIndex < totalLineCount)) {
+            postInvalidateDelayed(invalidateFrequency);
         }
 
     }

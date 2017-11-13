@@ -35,6 +35,8 @@ public class LrcViewDemoAcitivty extends Activity {
 
         lyricTextView.setText(msp);
 
+        lyricTextView.startAnimation();
+
     }
 
 }
