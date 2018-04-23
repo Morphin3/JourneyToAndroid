@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
@@ -7,18 +8,20 @@
 
 
     <!--<com.taoism.journeytoandroid.customview.lyricview.SongTextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="100dp"-->
-        <!--/>-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--/>-->
 
 
     <com.taoism.journeytoandroid.customview.lyricview.LyricTextView
         android:id="@+id/lyric_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="哈哈哈哈哈哈哈哈撒东方郡拉撒大姐夫啦善良劫匪撒龙卷风撒垃圾付款了撒娇付款了撒酒疯撒练腹肌撒困了就付款了萨芬就看了撒"
-        android:textColor="@color/bg_black_light"
+        android:textColor="@android:color/black"
+        app:originalColor="@color/gray_33"
+        app:overlayColor="@color/blue_1a97ff"
         />
+    <!--android:text="字体测试字体大小一半两倍前景色背景色正常粗体斜体粗斜体下划线删除线x1x2电话邮件网站短信彩信地图X轴综合/bot"-->
 
 
     <!--<org.sang.lrcview.LrcView-->

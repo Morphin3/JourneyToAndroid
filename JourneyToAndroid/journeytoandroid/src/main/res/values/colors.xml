@@ -228,4 +228,11 @@
     <color name="primaryDark">#00796b</color>
     <color name="accent">#eeff41</color>
     <color name="accentLight">#F4FF81</color>
+
+    <color name="gray_33">#333333</color>
+
+    <color name="yellow_ffbd18">#ffbd18</color>
+    <color name="yellow_ffbd18_trans_73">#73ffbd18</color>
+
+    <color name="blue_1a97ff">#1a97ff</color>
 </resources>

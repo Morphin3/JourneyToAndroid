@@ -31,9 +31,8 @@ public class LrcViewDemoAcitivty extends Activity {
         msp = new SpannableString("字体测试字体大小一半两倍前景色背景色正常粗体斜体粗斜体下划线删除线x1x2电话邮件网站短信彩信地图X轴综合/bot");
 
         //设置字体前景色
-        msp.setSpan(new ForegroundColorSpan(Color.MAGENTA), 3, 7, Spanned.SPAN_INCLUSIVE_INCLUSIVE);  //设置前景色为洋红色
-
-        lyricTextView.setText(msp);
+        msp.setSpan(new ForegroundColorSpan(Color.GREEN), 3, 7, Spanned.SPAN_INCLUSIVE_INCLUSIVE);  //设置前景色为洋红色
+        lyricTextView.setLyricText(msp);
 
         lyricTextView.startAnimation();
 

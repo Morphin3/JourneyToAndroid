@@ -42,7 +42,7 @@ public class AlphaImageView extends ImageView {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AlphaImageView);
         //获取duration参数
-        int duration = typedArray.getInt(R.styleable.AlphaImageView_duration, 0);
+        int duration = typedArray.getInt(R.styleable.AlphaImageView_duration1, 0);
 //        typedArray.recycle();
         //计算图像透明度每次改变的大小
         alphaDelta = 255 * SPEED / duration;

@@ -1,7 +1,11 @@
 package com.taoism.journeytoandroid.customview.lyricview;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,8 +14,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.text.StaticLayout;
@@ -20,18 +22,27 @@ import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ValueAnimator;
+import com.taoism.journeytoandroid.R;
+
 
 /**
  * Date: 2017-11-12
  * Time: 11:37
- * Author: cf
+ * Author: chenfei
  * -----------------------------
  */
 
 public class LyricTextView extends TextView {
+
+
+    private final int default_original_color = Color.rgb(0x00, 0x00, 0x00);
+    private final int default_overlay_color  = Color.rgb(0x49, 0xC1, 0x20);
+    private final int default_duration       = 10 * 1000;
+
+    private int          originalColor;
+    private int          overlayColor;
+    private int          duration;
+    private CharSequence lyricText;
 
     private PorterDuffXfermode xformode;
     private TextPaint          mSrcPaint;
@@ -48,11 +59,27 @@ public class LyricTextView extends TextView {
     }
 
     public LyricTextView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.lyricTextViewStyle);
     }
 
     public LyricTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        final TypedArray typedArray = context.obtainStyledAttributes(attrs,
+                                                                     R.styleable.LyricTextView,
+                                                                     defStyleAttr,
+                                                                     R.style.LyricTextView);
+
+        try {
+            originalColor = typedArray.getColor(R.styleable.LyricTextView_originalColor, default_original_color);
+            overlayColor = typedArray.getColor(R.styleable.LyricTextView_overlayColor, default_overlay_color);
+            duration = typedArray.getInteger(R.styleable.LyricTextView_duration, default_duration);
+            lyricText = typedArray.getString(R.styleable.LyricTextView_lyricText);
+
+        } finally {
+            typedArray.recycle();
+        }
+
         init();
     }
 
@@ -72,7 +99,7 @@ public class LyricTextView extends TextView {
 //        final CompatibilityInfo compat = res.getCompatibilityInfo();
 
         mSrcPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        mSrcPaint.setColor(Color.CYAN);
+        mSrcPaint.setColor(originalColor);
         mSrcPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mSrcPaint.density = res.getDisplayMetrics().density;
 //        mSrcPaint.setCompatibilityScaling(compat.applicationScale);
@@ -84,7 +111,7 @@ public class LyricTextView extends TextView {
 
 
         mCoverPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        mCoverPaint.setColor(Color.RED);
+        mCoverPaint.setColor(overlayColor);
         mCoverPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mCoverPaint.density = res.getDisplayMetrics().density;
 //        mCoverPaint.setCompatibilityScaling(compat.applicationScale);
@@ -95,8 +122,20 @@ public class LyricTextView extends TextView {
         xformode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
         mCoverPaint.setXfermode(xformode);
 
-        totalWordWidth = mSrcPaint.measureText(getText().toString());
+        setLyricText(getText());
+    }
 
+
+    public void setLyricText(CharSequence text) {
+        setText(text);
+        this.lyricText = text;
+
+        totalWordWidth = mSrcPaint.measureText(text,0, text.length()) + 300;
+
+        initAnimation();
+    }
+
+    private void initAnimation() {
         valueAnimator = ValueAnimator.ofFloat(0f, totalWordWidth);
         valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.setDuration(totalTime);
@@ -108,11 +147,24 @@ public class LyricTextView extends TextView {
             }
 
             @Override
-            public void onAnimationEnd(Animator animation) {
+            public void onAnimationEnd(final Animator animation) {
                 super.onAnimationEnd(animation);
-                animating = false;
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        animating = false;
+                    }
+                }, 500);
+
             }
         });
+    }
+
+    public void reset() {
+        postIndex = 0;
+        lineIndex = 0;
+        initAnimation();
+        postInvalidate();
     }
 
     public void startAnimation() {
@@ -133,9 +185,10 @@ public class LyricTextView extends TextView {
 
         wantWidth = getMeasuredWidth() - getCompoundPaddingLeft() - getCompoundPaddingRight();
 
+
         staticLayout = new StaticLayout(getText(),
                                         mSrcPaint,
-                                        wantWidth,
+                                        getMeasuredWidth(),
                                         Layout.Alignment.ALIGN_NORMAL,
                                         lineSpacingMultiplier,
                                         lineSpacingExtra,
@@ -153,40 +206,26 @@ public class LyricTextView extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//
-//        mSrcPaint.setColor(Color.RED);
-//        mSrcPaint.setXfermode(xformode);
-//        StaticLayout staticLayout1 = new StaticLayout(getText(),
-//                                                      0,
-//                                                      staticLayout.getLineStart(lineIndex),
-//                                                      mSrcPaint,
-//                                                      wantWidth,
-//                                                      Layout.Alignment.ALIGN_NORMAL,
-//                                                      lineSpacingMultiplier,
-//                                                      lineSpacingExtra,
-//                                                      true);
-//        staticLayout1.draw(canvas);
 
         // MISSION:  内存优化
 
-        mSrcPaint.setXfermode(null);
         Bitmap srcBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         Canvas srcCanvas = new Canvas(srcBitmap);
         staticLayout.draw(srcCanvas);
 
         mCoverPaint.setXfermode(xformode);
 
-        StaticLayout staticLayout2 = new StaticLayout(getText(),
-                                                      0,
-                                                      staticLayout.getLineStart(lineIndex),
-                                                      mCoverPaint,
-                                                      wantWidth,
-                                                      Layout.Alignment.ALIGN_NORMAL,
-                                                      lineSpacingMultiplier,
-                                                      lineSpacingExtra,
-                                                      true);
-
-        staticLayout2.draw(srcCanvas);
+//        StaticLayout staticLayout2 = new StaticLayout(getText(),
+//                                                      0,
+//                                                      staticLayout.getLineStart(lineIndex),
+//                                                      mCoverPaint,
+//                                                      wantWidth,
+//                                                      Layout.Alignment.ALIGN_NORMAL,
+//                                                      lineSpacingMultiplier,
+//                                                      lineSpacingExtra,
+//                                                      true);
+//
+//        staticLayout2.draw(srcCanvas);
 
 
         RectF rectF1 = new RectF(0,
@@ -204,12 +243,12 @@ public class LyricTextView extends TextView {
         canvas.drawBitmap(srcBitmap, 0, 0, null);
 
         float currentValue = ((float) valueAnimator.getAnimatedValue());
+
         postIndex = currentValue % getMeasuredWidth();
 
         if (currentValue - lineIndex * getMeasuredWidth() >= getMeasuredWidth()) {
             if (lineIndex < totalLineCount) {
                 lineIndex++;
-                postIndex = currentValue % getMeasuredWidth();
             }
         }
 
@@ -218,4 +257,5 @@ public class LyricTextView extends TextView {
         }
 
     }
+
 }

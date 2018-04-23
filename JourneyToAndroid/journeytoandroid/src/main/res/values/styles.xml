@@ -507,6 +507,11 @@
     </style>
 
 
+    <style name="LyricTextView">
+
+    </style>
+
+
 
 
 </resources>

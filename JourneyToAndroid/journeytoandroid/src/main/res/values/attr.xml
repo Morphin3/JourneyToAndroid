@@ -7,7 +7,7 @@
     <!--<attr name="duration" format="integer"></attr>-->
     <!--定义一个styleable对象来组合多个属性-->
     <declare-styleable name="AlphaImageView">
-        <attr name="duration" format="integer"/>
+        <attr name="duration1" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="ExpandableTextView">
@@ -32,6 +32,19 @@
 
     <declare-styleable name="VideoSeekViewTheme">
         <attr name="videoSeekViewStyle" format="reference"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="LyricTextView">
+        <attr name="originalColor" format="color"/>
+        <attr name="overlayColor" format="color"/>
+        <attr name="duration" format="integer"/>
+        <attr name="lyricText" format="string"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="LyricTextViewTheme">
+        <attr name="lyricTextViewStyle" format="reference"/>
     </declare-styleable>
 
 
