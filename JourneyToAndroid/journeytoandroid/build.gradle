@@ -8,6 +8,7 @@ buildscript {
     }
 }
 apply plugin: 'android'
+apply plugin: 'android-aspectjx'
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -475,6 +476,32 @@ if (buildWithTinker()) {
 //}
 
 
+//------------------------------------
+
+aspectjx {
+    enabled true
+//    exclude '*'
+
+
+
+    //  -------
+
+    //织入遍历符合条件的库
+//    includeJarFilter 'universal-image-loader', 'AspectJX-Demo/library'
+    //排除包含‘universal-image-loader’的库
+//    excludeJarFilter 'universal-image-loader'
+
+//    . 忽略groupId为org.apache.httpcomponents的库
+//    excludeJarFilter 'org.apache.httpcomponents'
+//    . 忽略artifactId为gson的库
+//    excludeJarFilter 'gson'
+//    忽略jar alisdk-tlog-1.jar
+//    excludeJarFilter 'alisdk-tlog-1'
+//    忽略所有依赖的库
+//    excludeJarFilter '.jar'
+
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile('com.android.support:support-v4:23.0.0') {
@@ -510,6 +537,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-vision:9.4.0'
 
     compile project (':LrcView')
+
+    // AOP
+    compile 'org.aspectj:aspectjrt:1.8.+'
 
 
     }

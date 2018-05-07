@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.multidex.MultiDex;
 
-import com.activeandroid.ActiveAndroid;
 import com.taoism.journeytoandroid.tinker.Log.MyLogImp;
 import com.taoism.journeytoandroid.tinker.util.TinkerManager;
 import com.taoism.journeytoandroid.utils.applicationutil.AppProfile;
@@ -51,7 +50,9 @@ public class JourneyApplicationLike extends DefaultApplicationLike {
     public void onCreate() {
         super.onCreate();
 
-        ActiveAndroid.initialize(getApplication());
+        //Active Android
+//        ActiveAndroid.initialize(getApplication());
+
         Context context = getApplication().getApplicationContext();
         AppProfile.sContext = context;
 
