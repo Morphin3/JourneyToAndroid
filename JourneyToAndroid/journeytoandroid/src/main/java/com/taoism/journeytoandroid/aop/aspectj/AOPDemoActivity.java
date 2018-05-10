@@ -20,8 +20,9 @@ public class AOPDemoActivity extends Activity {
         super.onCreate(savedInstanceState);
         Log.i("AOP", "onCreate");
 
-
         testAOP();
+
+        Log.e("AOP", "AOP LOG TEST!");
     }
 
     @Override

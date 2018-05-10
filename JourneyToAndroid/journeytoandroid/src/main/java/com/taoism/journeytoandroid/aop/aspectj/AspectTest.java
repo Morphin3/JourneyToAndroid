@@ -45,4 +45,28 @@ public class AspectTest {
     }
 
 
+    //    @Before("execution(* *..e(..))")
+//    @Before("execution(* android..*.Log.e(..))")
+//    @Before("execution(* android.util..Log+.e(..))")
+//    @Before("execution(* android.util..Log.e(..))")
+    @Before("call(* android.util.Log.e(..))")
+    public void beforeLogE(JoinPoint joinPoint) {
+        String key = joinPoint.getSignature().toString();
+        Log.d("AOP", "before Log.E():" + key);
+
+        Object[] args = joinPoint.getArgs();
+        if (args != null && args.length > 1 && args[1].getClass() == String.class) {
+            Log.d("AOP", "获取到的参数是" + args[0] + "," + args[1]);
+        }
+    }
+
+
+//    @Pointcut("call(static * *(..))")
+//    public void anyStaticOperation() {}
+//
+//    @Around("anyStaticOperation()")
+//    public void aroundStaticMethods(ProceedingJoinPoint jp) throws Throwable {
+//        Log.d("AOP", "before Log.E():");
+//        jp.proceed();
+//    }
 }
