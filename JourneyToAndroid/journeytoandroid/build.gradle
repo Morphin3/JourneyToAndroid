@@ -2,13 +2,30 @@ buildscript {
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter { url "http://jcenter.bintray.com/" }
-
         mavenCentral()
 //        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.taoism.gradleplugin:plugin:1.0.2-SNAPSHOT"
     }
 }
+
+
+//plugins {
+//    id "com.taoism.logplugin" version "1.0.2-SNAPSHOT"
+//}
+
+
+
+
+
 apply plugin: 'android'
 apply plugin: 'android-aspectjx'
+apply plugin: "com.taoism.logplugin"
+
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -468,21 +485,17 @@ if (buildWithTinker()) {
 //    transitive = false
 //}
 
-
 //android{
 //    configurations.all{
 //        resolutionStrategy.force 'org.hamcrest:hamcrest-core:1.1'
 //    }
 //}
 
-
 //------------------------------------
 
 aspectjx {
     enabled true
 //    exclude '*'
-
-
 
     //  -------
 
@@ -524,7 +537,7 @@ dependencies {
     //tinker的核心库
     compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
 
-    compile (project(':AndroidHorizontalListView')){
+    compile(project(':AndroidHorizontalListView')) {
 //        exclude module: 'support-v4'
     }
 
@@ -536,13 +549,13 @@ dependencies {
 //    compile 'com.google.android.gms:play-services:10.2.4'
     compile 'com.google.android.gms:play-services-vision:9.4.0'
 
-    compile project (':LrcView')
+    compile project(':LrcView')
 
     // AOP
     compile 'org.aspectj:aspectjrt:1.8.+'
 
 
-    }
+}
 
 
 
