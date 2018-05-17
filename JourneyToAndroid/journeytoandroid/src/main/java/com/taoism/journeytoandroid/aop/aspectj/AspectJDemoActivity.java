@@ -12,7 +12,7 @@ import android.util.Log;
  * -----------------------------
  * MISSION
  */
-public class AOPDemoActivity extends Activity {
+public class AspectJDemoActivity extends Activity {
 
 
     @Override

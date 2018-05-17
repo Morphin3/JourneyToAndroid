@@ -634,7 +634,7 @@
         <!--***************************************   AOP   ******************************************************************************************-->
 
         <activity
-            android:name="com.taoism.journeytoandroid.aop.aspectj.AOPDemoActivity"
+            android:name="com.taoism.journeytoandroid.aop.aspectj.AspectJDemoActivity"
             android:label="AOP/AspectJ"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -642,6 +642,17 @@
                 <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.taoism.journeytoandroid.aop.javassist.JavassistDemoActivity"
+            android:label="AOP/Javassist"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
+            </intent-filter>
+        </activity>
+
 
 
 

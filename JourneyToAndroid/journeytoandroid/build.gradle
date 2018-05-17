@@ -1,15 +1,12 @@
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter { url "http://jcenter.bintray.com/" }
         mavenCentral()
 //        jcenter()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
-        classpath "gradle.plugin.com.taoism.gradleplugin:plugin:1.0.2-SNAPSHOT"
+
     }
 }
 
@@ -22,13 +19,13 @@ buildscript {
 
 
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 apply plugin: 'android-aspectjx'
 apply plugin: "com.taoism.logplugin"
 
 
 repositories {
-    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     jcenter { url "http://jcenter.bintray.com/" }
 
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
