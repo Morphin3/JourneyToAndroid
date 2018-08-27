@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.2.61'
     repositories {
         mavenCentral()
         jcenter()
@@ -24,6 +25,7 @@ buildscript {
 
         //本地依赖
         classpath 'com.taoism.gradleplugin:logplugin:1.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //远程依赖
 //        classpath "gradle.plugin.com.taoism.gradleplugin:plugin:0.0.19-SNAPSHOT"
     }
