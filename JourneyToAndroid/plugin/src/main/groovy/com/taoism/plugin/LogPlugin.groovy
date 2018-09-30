@@ -1,6 +1,6 @@
 package com.taoism.plugin
 
-import com.taoism.javassist.transform.TransformTest
+import com.taoism.javassist.transform.ASMTransform
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -22,7 +22,8 @@ public class LogPlugin implements Plugin<Project> {
 //        android.registerTransform(new TransformTest(project))
 
 //        注册一个Transform
-        project.android.registerTransform(new TransformTest(project));
+//        project.android.registerTransform(new TransformTest(project));
+        project.android.registerTransform(new ASMTransform(project));
 
         System.out.println("------------------结束----------------------->");
 

@@ -6,6 +6,8 @@ import com.taoism.javassist.MyInjects
 import org.gradle.api.Project
 import org.apache.commons.io.FileUtils
 import org.apache.commons.codec.digest.DigestUtils
+import org.gradle.api.logging.Logger
+
 /**
  * Date: 2018-05-10
  * Time: 13:18
@@ -16,9 +18,12 @@ import org.apache.commons.codec.digest.DigestUtils
 public class TransformTest extends Transform {
 
     private Project project;
+    static Logger logger
+
 
     public TransformTest(Project project) {
         this.project = project;
+        logger = project.logger
     }
 
     //transform的名称
@@ -88,7 +93,7 @@ public class TransformTest extends Transform {
 //        transformInvocation.getOutputProvider()
 //        transformInvocation.isIncremental()
 
-        System.out.println("----------------进入transform了--------------")
+        logger.lifecycle("----------------进入transform了--------------")
 
         //遍历input
         transformInvocation.getInputs().each { TransformInput input ->
@@ -120,6 +125,6 @@ public class TransformTest extends Transform {
                 FileUtils.copyFile(jarInput.file, dest)
             }
         }//        }
-        System.out.println("--------------结束transform了----------------")
+        logger.lifecycle("--------------结束transform了----------------")
     }
 }
