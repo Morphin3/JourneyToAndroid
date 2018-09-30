@@ -10,18 +10,15 @@ buildscript {
     }
 }
 
-
 //plugins {
 //    id "com.taoism.logplugin" version "1.0.2-SNAPSHOT"
 //}
 
 
-
-
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'android-aspectjx'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: "com.taoism.logplugin"
 
 
@@ -56,7 +53,7 @@ def gitSha() {
 
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion '25.0.2'
 
     compileOptions {
@@ -554,8 +551,6 @@ dependencies {
     compile 'org.aspectj:aspectjrt:1.8.+'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    compile 'com.android.support.constraint:constraint-layout:1.1.2'
 
 }
-
-
-

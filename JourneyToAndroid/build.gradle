@@ -30,6 +30,12 @@ buildscript {
 //        classpath "gradle.plugin.com.taoism.gradleplugin:plugin:0.0.19-SNAPSHOT"
     }
 
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 5, 'minutes'
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+
 }
 
 allprojects {
