@@ -97,4 +97,13 @@ public class ServiceDemoActivity extends Activity implements View.OnClickListene
         }
     }
 
+    public void manualOperation(View view) {
+        try {
+            myAIDLService.plus(1, 2);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

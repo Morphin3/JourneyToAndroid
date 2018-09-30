@@ -29,4 +29,12 @@
         android:text="Unbind Service"
         />
 
+    <Button
+        android:id="@+id/manualOperation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="手动调用 Service 中的方法"
+        android:onClick="manualOperation"
+        />
+
 </LinearLayout>
