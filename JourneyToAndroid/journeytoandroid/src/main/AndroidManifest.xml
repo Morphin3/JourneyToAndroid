@@ -289,22 +289,22 @@
 
         <!-- ***************************************   ActionBar   ****************************************************************************************** -->
 
-        <activity
-            android:name=".actionbar.ActionBarDemoActivity"
-            android:label="ActionBar/ActionBarDemo"
-            android:parentActivityName=".JourneyToAndroid"
-            android:theme="@style/ActionBarCustomTheme">
+        <!--<activity-->
+            <!--android:name=".actionbar.ActionBarDemoActivity"-->
+            <!--android:label="ActionBar/ActionBarDemo"-->
+            <!--android:parentActivityName=".JourneyToAndroid"-->
+            <!--android:theme="@style/ActionBarCustomTheme">-->
 
-            <!-- <meta-data -->
-            <!-- android:name="android.support.PARENT_ACTIVITY" -->
-            <!-- android:value=".JourneyToAndroid"/> -->
+            <!--&lt;!&ndash; <meta-data &ndash;&gt;-->
+            <!--&lt;!&ndash; android:name="android.support.PARENT_ACTIVITY" &ndash;&gt;-->
+            <!--&lt;!&ndash; android:value=".JourneyToAndroid"/> &ndash;&gt;-->
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
-            </intent-filter>
-        </activity>
+                <!--<category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
         <!-- ***************************************   BroadCast   ****************************************************************************************** -->
 
@@ -641,16 +641,16 @@
 
 
         <!-- ***************************************   Kotlin   ****************************************************************************************** -->
-        <activity
-            android:name=".kotlin.HelloKotlinActivity"
-            android:label="Kotlin/HelloKotlin"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        <!--<activity-->
+            <!--android:name=".kotlin.HelloKotlinActivity"-->
+            <!--android:label="Kotlin/HelloKotlin"-->
+            <!--android:screenOrientation="portrait">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>
-            </intent-filter>
-        </activity>
+                <!--<category android:name="android.intent.category.JOURNEY_TO_ANDROID"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
     </application>
 
 </manifest>
