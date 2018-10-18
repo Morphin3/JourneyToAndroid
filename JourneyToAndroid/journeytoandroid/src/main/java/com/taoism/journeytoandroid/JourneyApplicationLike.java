@@ -7,6 +7,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.multidex.MultiDex;
 
+import com.facebook.flipper.android.AndroidFlipperClient;
+import com.facebook.flipper.android.utils.FlipperUtils;
+import com.facebook.flipper.core.FlipperClient;
+import com.facebook.flipper.plugins.inspector.DescriptorMapping;
+import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin;
+import com.facebook.flipper.plugins.network.NetworkFlipperPlugin;
+import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin;
+import com.facebook.soloader.SoLoader;
 import com.taoism.journeytoandroid.tinker.Log.MyLogImp;
 import com.taoism.journeytoandroid.tinker.util.TinkerManager;
 import com.taoism.journeytoandroid.utils.applicationutil.AppProfile;
@@ -74,6 +82,19 @@ public class JourneyApplicationLike extends DefaultApplicationLike {
 //                    .penaltyDeath()
 //                    .build());
 //        }
+
+
+
+        SoLoader.init(application, false);
+        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(application)) {
+            final FlipperClient client = AndroidFlipperClient.getInstance(application);
+            client.addPlugin(new InspectorFlipperPlugin(application, DescriptorMapping.withDefaults()));
+            NetworkFlipperPlugin networkFlipperPlugin = new NetworkFlipperPlugin();
+            client.addPlugin(networkFlipperPlugin);
+            client.addPlugin(
+                    new SharedPreferencesFlipperPlugin(context, "my_shared_preference_file"));
+            client.start();
+        }
 
     }
 

@@ -23,7 +23,8 @@ public class HttpDemoActivity extends BaseActivity implements View.OnClickListen
     private TextView tvResponse;
 
 //    private String mUrl = "http://127.0.0.1:8001/?name=chenfei&website=www.baidu.com&user=admin&pass=123467";
-    private String mUrl = "http://10.242.54.138:8001/?name=chenfei&website=www.baidu.com&user=admin&pass=123467";
+//    private String mUrl = "http://10.242.54.138:8001/?name=chenfei&website=www.baidu.com&user=admin&pass=123467";
+    private String mUrl = "https://www.baidu.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
